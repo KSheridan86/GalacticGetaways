@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaHome, FaInfoCircle, FaMap, FaPhone } from 'react-icons/fa';
+import '../App.css'
 
 const Nav = () => {
   return (
