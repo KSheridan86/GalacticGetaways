@@ -47,7 +47,7 @@ const Tours = () => {
         };
 
         fetchCoordinates();
-        const intervalId = setInterval(fetchCoordinates, 1500000);
+        const intervalId = setInterval(fetchCoordinates, 1000);
 
         return () => {
         clearInterval(intervalId);
@@ -56,15 +56,22 @@ const Tours = () => {
     }, []);
 
     return (
-        <div className="outer-container">
-            <div id="box">
+        <div>
+            <div className="about-bg"></div>
+            <h1 className="nasa page-title">Tours</h1>
+            <div className="outer-map">
                 <div ref={mapContainerRef} id="map-container" />
-                <div>
-                {Object.entries(issData).map(([key, value]) => (
-                    <p key={key}>
-                    {key}: {value}
-                    </p>
-                ))}
+            </div>
+        
+            <div className="outer-container">
+                <div className="glass-box" id="box">
+                    <div className="tours-info-box">
+                    {Object.entries(issData).map(([key, value]) => (
+                        <p key={key}>
+                        {key}: {value}
+                        </p>
+                    ))}
+                    </div>
                 </div>
             </div>
         </div>
