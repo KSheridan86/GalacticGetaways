@@ -1,15 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Home from './views/Home';
-import Tours from './views/Tours';
+import React from 'react'
+import Nav from './components/Nav'
+import Home from './views/Home'
+import Contact from './views/Contact'
+import Login from './views/Login'
+import Tours from './views/Tours'
+import { BrowserRouter as Router, Routes, Route  } from 'react-router-dom'
+import About from './views/About'
 
-function App() {
+const App = () => {
+  
   return (
-    <div className="App">
-      <Tours />
+    <Router>
+    <div>
+        <Nav />
+        <Routes>
+          <Route path='/' exact element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/tours' element={<Tours />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/login' element={<Login />} />
+        </Routes>
     </div>
-  );
+    </Router>
+  )
 }
 
-export default App;
+export default App
