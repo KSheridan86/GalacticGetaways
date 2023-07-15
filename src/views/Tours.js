@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import '../App.css';
-import spaceStationIcon from '../images/space-station.png';
+import spaceStationIcon from '../media/space-station.png';
 
 const Tours = () => {
     const mapContainerRef = useRef(null);
@@ -13,7 +13,7 @@ const Tours = () => {
         const map = L.map(
             mapContainerRef.current, 
             {zoomControl: false, attributionControl: false,}
-            ).setView([0, 0], 18);
+            ).setView([0, 0], 4);
         const accessToken = 'pk.eyJ1Ijoia2Vuc2hlcmlkYW4iLCJhIjoiY2xrMzVzOWV2MGhuZDNtb3l6d3NsbXZ2NiJ9.Vpu3VEdqd0SXcsk7FrrDMA'; // Replace with your Mapbox access token
 
         L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`, {
