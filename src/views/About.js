@@ -21,7 +21,6 @@ const About = () => {
       }
     }
     getInfo();
-    console.log(info);
   }, []);
 
   return (
@@ -30,7 +29,7 @@ const About = () => {
       {info.map((name, index) => (
         <div className="point" key={index}>
           <div className="intro">
-            <p className="intro-content">{name.data.Body}</p>
+            <p className="intro-content">{name.data.p}</p>
           </div>
         </div>
       ))}
