@@ -36,3 +36,23 @@
     transform: rotate(360deg);
   }
 }
+
+#map-container {
+  height: 70vh;
+  width: 100%;
+  background-color: #f7f7f7;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  /* Desktop styles */
+  #map-container {
+    height: 50vh;
+  }
+}
+
+#box {
+  margin: 2rem;
+  border: 1px solid black;
+}
