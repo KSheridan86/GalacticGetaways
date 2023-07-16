@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@200;300;400;700&display=swap');
 
@@ -85,13 +86,6 @@ button:active {
   box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
-  /* Desktop styles */
-  #map-container {
-    height: 50vh;
-  }
-}
-
 
 /* NAVIGATION */
 
@@ -99,6 +93,7 @@ button:active {
   margin: 2rem;
   border: 1px solid black;
 }
+
 .bottom-nav {
   display: flex;
   justify-content: space-around;
@@ -119,6 +114,7 @@ button:active {
 
 .bottom-nav a span {
   font-size: 14px; /* Increase the font size */
+
 }
 
 
@@ -269,4 +265,94 @@ button:active {
 }
 
 
-/* TOURS */
+/* About page styles */
+.about-bg {
+  background-image: url('./media/star-image.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.about-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  color: #fff;
+  text-align: center;
+}
+
+.about-intro-content {
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border-radius: 5%;
+}
+
+.page-title {
+  margin: 0;
+  background-color: #333;
+  color: antiquewhite;
+  text-align: center ;
+}
+
+.glass-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 1rem 1rem 5rem 1rem;
+  max-width: 600px;
+  color: #fff;
+}
+
+/* Tours page styles */
+
+.outer-container {
+  margin: 0rem 0rem 5rem 0rem;
+}
+#map-container {
+  height: 60vh;
+  width: 100%;
+  background-color: #f7f7f7;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  box-shadow:
+    0 5px 50px rgba(0, 0, 0, 0.3),
+    0 2px 10px rgba(0, 0, 0, 0.2) inset;
+}
+#box {
+  margin: 2rem;
+  border: 1px solid black;
+}
+
+.outer-map {
+  margin: .5rem;
+}
+
+.tours-info-box {
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  /* Desktop styles */
+  #map-container {
+    height: 50vh;
+  }
+}
+
