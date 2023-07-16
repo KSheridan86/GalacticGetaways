@@ -1,41 +1,81 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@200;300;400;700&display=swap');
+
+body {
+  background-color: #111;
+  color: #fff;
+  font-family: 'Lato', Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', Arial, sans-serif;
+ 
+  color:#b92eff;
+  font-weight: 300;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+p {
+  color: #e6e6e6;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+a {
+  color: #6a75ff;
+
+  text-decoration: none;
+}
+
+.active {
+  color: #b92eff !important;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input, label {
+  color: #fff;
+}
+
+/* Button styles */
+button {
+  background-color: #b92eff;
   color: white;
+  padding: 4px 10px;
+  border: none;
+  font-size: 1.1em;
+  border-radius: 4px;
+  font-family: 'Oswald', Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+/* Button hover effect */
+button:hover {
+  background-color: white;
+  color: #b92eff;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Button active effect */
+button:active {
+  background-color: #b92eff;
+  color: white;
+  animation: buttonClickEffect 0.3s;
+}
+
+/* Button click animation */
+@keyframes buttonClickEffect {
+  0% {
+    transform: scale(1);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
   }
 }
+
+/* Add more specific styles for input and label elements as needed */
 
 #map-container {
   height: 70vh;
@@ -52,6 +92,9 @@
   }
 }
 
+
+/* NAVIGATION */
+
 #box {
   margin: 2rem;
   border: 1px solid black;
@@ -66,7 +109,18 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  font-size: 16px; /* Increase the font size */
 }
+
+.bottom-nav a .icon {
+  font-size: 28px; /* Increase the icon size */
+  margin-bottom: 3px; /* Adjust the spacing */
+}
+
+.bottom-nav a span {
+  font-size: 14px; /* Increase the font size */
+}
+
 
 .bottom-nav a {
   display: flex;
@@ -82,11 +136,137 @@
   opacity: 1;
 }
 
-.bottom-nav a .icon {
-  font-size: 24px;
-  margin-bottom: 5px;
+
+
+/* ACCOUNT */
+.account-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 56px); 
+  color: #fff;
+}
+.account-heading {
+  margin-bottom: 0;
 }
 
-.bottom-nav a span {
-  font-size: 12px;
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* margin-top: 20px; */
 }
+
+.avatar {
+  margin-top: 20px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.name-email {
+  
+  margin-bottom: 20px;
+}
+.user-name,
+.user-email {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: center;
+  margin: 0;
+  font-size: 1.2em;
+}
+.user-name p {
+  text-align: center !important;
+}
+.user-name-input,
+.user-email-input {
+  width: 200px;
+  height: 30px;
+
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+
+.name-input,
+.email-input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 16px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  border-radius: 5px;
+
+}
+
+.edit-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.sign-out-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #b92eff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.sign-out-button:hover {
+  background-color: #fff;
+  color: #b92eff;
+}
+
+/* Desktop Styles */
+@media (min-width: 768px) {
+  .account-page {
+    padding: 20px;
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+  }
+
+  .user-name {
+    font-size: 24px;
+  }
+
+  .user-email {
+    font-size: 16px;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 481px) and (max-width: 767px) {
+  .account-page {
+    padding: 15px;
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+  }
+
+  .user-name {
+    font-size: 22px;
+  }
+
+  .user-email {
+    font-size: 22px;
+  }
+}
+
+
+/* TOURS */

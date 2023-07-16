@@ -1,15 +1,8 @@
-// Import the functions you need from the SDKs you need
-
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore"
+import { getFirestore } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
+import { getAuth, setPersistence, browserSessionPersistence } from "firebase/auth";
 
-// TODO: Add SDKs for Firebase products that you want to use
-
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-
-// Your web app's Firebase configuration
 
 const firebaseConfig = {
   apiKey: "AIzaSyB12Ri1wV34IkIH_S6-8DMru3sLbDXEBhk",
@@ -24,8 +17,17 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const storage = getStorage(app);
-
-// Create a storage reference from our storage service
 const storageRef = ref(storage);
 
+export const auth = getAuth();
+
+setPersistence(auth, browserSessionPersistence)
+  .then(() => {
+    console.log('Session persistence enabled');
+  })
+  .catch((error) => {
+    console.error('Error enabling session persistence:', error);
+  });
+
+export default app;
 export const db = getFirestore(app);
