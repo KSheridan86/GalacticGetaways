@@ -28,4 +28,4 @@ const storage = getStorage(app);
 // Create a storage reference from our storage service
 const storageRef = ref(storage);
 
-export const db = getFirestore(app);
+export const db = getFirestore(app)
