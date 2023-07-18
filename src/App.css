@@ -1,11 +1,24 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@200;300;400;700&display=swap');
+@font-face {
+  font-family: 'NASA';
+  src: url('./fonts/nasa.woff') format('woff');
+}
 
+body, html {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Lato', Arial, sans-serif;
+}
 body {
   background-color: #111;
   color: #fff;
-  font-family: 'Lato', Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -37,47 +50,73 @@ input, label {
   color: #fff;
 }
 
-/* Button styles */
+.button-container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
 button {
-  background-color: #b92eff;
-  color: white;
-  padding: 4px 10px;
-  border: none;
-  font-size: 1.1em;
-  border-radius: 4px;
+  position: relative;
+  padding: 3px 20px;
+  color: #fff;
+  font-weight: 300;
   font-family: 'Oswald', Arial, sans-serif;
+  font-size: 18px;
+  letter-spacing: .01em;
+  border-radius: 50px;
+  border: 1px solid #b92eff;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  background-color: #111;
+  overflow: hidden; 
+  transition: background-color 0.5s ease-in-out; 
 }
 
-/* Button hover effect */
+button::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -15px;
+  padding: 5px 22px;
+  
+  z-index: -1;
+  background-image: linear-gradient(159deg, rgba(185, 46, 255, 1) 0%, rgba(0, 99, 255, 1) 100%);
+  border-image-slice: 1;
+  border-radius: 50px;
+  opacity: 1;
+  transform: scaleX(0); 
+  transition: opacity 0s, transform 0.6s; 
+}
+
+button:hover::before {
+  opacity: 1;
+  transform: scaleX(1); 
+  
+}
+
+@keyframes backgroundColorChange {
+  from {
+    background-color: #111; 
+  }
+  to {
+    background-color: transparent; 
+  }
+}
+
 button:hover {
-  background-color: white;
-  color: #b92eff;
+  animation: backgroundColorChange 0.5s ease-in-out;
+  background-color: transparent; 
+  border: none;
+  padding: 4px 21px;
+  transition:  ease-in-out;
 }
 
-/* Button active effect */
-button:active {
-  background-color: #b92eff;
-  color: white;
-  animation: buttonClickEffect 0.3s;
+.app {
+  width: 100%;
 }
-
-/* Button click animation */
-@keyframes buttonClickEffect {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.95);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Add more specific styles for input and label elements as needed */
-
 #map-container {
   height: 70vh;
   width: 100%;
@@ -95,7 +134,7 @@ button:active {
 }
 
 .bottom-nav {
-  display: flex;
+  display: flex; 
   justify-content: space-around;
   align-items: center;
   background-color: #000;
@@ -104,16 +143,17 @@ button:active {
   bottom: 0;
   left: 0;
   width: 100%;
-  font-size: 16px; /* Increase the font size */
+  font-size: 16px; 
+  z-index: 100;
 }
 
 .bottom-nav a .icon {
-  font-size: 28px; /* Increase the icon size */
-  margin-bottom: 3px; /* Adjust the spacing */
+  font-size: 28px; 
+  margin-bottom: 3px; 
 }
 
 .bottom-nav a span {
-  font-size: 14px; /* Increase the font size */
+  font-size: 14px; 
 
 }
 
@@ -133,6 +173,101 @@ button:active {
 }
 
 
+/* LOGO */
+.logo-container{
+  position: relative;
+width: 100%;
+height: 200px;
+z-index: 100 !important;
+}
+
+.logo{
+width: 100vw;
+z-index: 100;
+}
+
+/* HOME */
+
+.intro {
+  width: 100%;
+  /* padding: 10px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.intro img {
+  width: 90%;
+  height: auto;
+  margin: 0 ;
+  border-radius: 5px;
+ border: 2px solid  rgba(185, 46, 255, 1); 
+  border-image-slice: 1;
+  /* border-image-source: linear-gradient(159deg, rgba(185, 46, 255, 1) 0%, rgba(0, 99, 255, 1) 100%); */
+}
+.home-container {
+  position: relative;
+}
+.pg-wrap {
+  height: calc(100vh - 60px);
+}
+
+.login-container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.full-image-container {
+  position: relative;
+  height: calc(100vh - 256px);
+  overflow: hidden;
+}
+
+.full-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.full-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+.intro-head {
+  margin:10px 0 0  0;
+  font-size: 1.7em;
+  font-weight: 40;
+}
+.intro-content {
+  text-align: center;
+  
+}
+.mapbtn {
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+.last-item {
+  padding-top: 10px;
+  padding-bottom: 40px;
+}
+.intro-video  {
+  border-top: #b92eff 2px solid;
+}
+.intro-video video {
+  width: 100%;
+  height: auto;
+}
 
 /* ACCOUNT */
 .account-page {
@@ -348,11 +483,202 @@ button:active {
   color: #fff;
 }
 
-/* Media Queries */
+
 @media (min-width: 768px) {
-  /* Desktop styles */
   #map-container {
     height: 50vh;
   }
 }
 
+
+
+/* CONTACT */
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  color: #fff;
+  height: calc(100vh - 80px) ;
+  background-image: url('./media/shut.png');
+}
+
+.form-container {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  height: calc(100vh - 80px) ;
+}
+
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-size: 16px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #333;
+  width: 95%;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+}
+.form-group select {
+  width: 100%;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-btn-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+button[type='submit'] {
+border: none;
+  font-size: 1.2em;
+  background-image: linear-gradient(25deg, #b92eff, #0063ff);
+  color: #fff;
+ 
+
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button[type='submit']:hover {
+  background-image: linear-gradient(25deg, #b92eff, #0063ff);
+  color: #fff;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 100;
+  text-align: center;
+}
+
+.popup h2 {
+  margin-bottom: 10px;
+}
+
+.popup p {
+  margin-bottom: 0;
+}
+
+
+/* LOGIN */
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+height: 80vh;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.google-icon-container {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 15px #ffffff7c;
+  position: relative;
+  background-image: linear-gradient(25deg, #b92eff, #0063ff);
+  overflow: hidden;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  transition: transform 1s;
+}
+
+.google-icon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  transition: transform 1s;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: 4em;
+}
+
+.google-icon svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  fill: url(#gradient);
+}
+
+.slide-left {
+  transform: translateX(-170%);
+}
+
+.slide-right {
+  transform: translateX(100%);
+}
+
+@keyframes slideRight {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+.login-text {
+  color: #fff;
+  font-size: 7.5vw;
+  font-family: 'NASA', sans-serif;
+  position: absolute;
+  left: 30%;
+  transition: all 1.5s ease-in-out;
+}
+.fade-in {
+  transition: opacity 5s ease;
+  opacity: 1;
+}
+.fade-out {
+  opacity: 0;
+  transition: opacity .5s ease;
+}

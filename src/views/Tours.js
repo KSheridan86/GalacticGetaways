@@ -14,12 +14,12 @@ const Tours = () => {
             mapContainerRef.current, 
             {zoomControl: false, attributionControl: false,}
             ).setView([0, 0], 4);
-        const accessToken = 'pk.eyJ1Ijoia2Vuc2hlcmlkYW4iLCJhIjoiY2xrMzVzOWV2MGhuZDNtb3l6d3NsbXZ2NiJ9.Vpu3VEdqd0SXcsk7FrrDMA'; // Replace with your Mapbox access token
+        const accessToken = 'pk.eyJ1Ijoia2Vuc2hlcmlkYW4iLCJhIjoiY2xrMzVzOWV2MGhuZDNtb3l6d3NsbXZ2NiJ9.Vpu3VEdqd0SXcsk7FrrDMA'; 
 
         L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${accessToken}`, {
             attribution: 'Map data &copy; <a href="https://www.mapbox.com/">Mapbox</a> contributors',
             maxZoom: 24,
-            id: 'mapbox/satellite-v9', // Replace with your desired map style
+            id: 'mapbox/satellite-v9', 
             tileSize: 512,
             zoomOffset: -1
             }).addTo(map);

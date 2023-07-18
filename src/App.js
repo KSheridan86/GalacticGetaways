@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <Router>
-      <div>
+      <div className='app'>
         <Nav isLoggedIn={isLoggedIn} />
         <Routes>
           <Route path="/" element={<Home />} />
