@@ -34,7 +34,7 @@ const About = () => {
         {info.map((name, index) => (
           <div className="point" key={index}>
             <div className="about-intro">
-              <h3 className="nasa easy-white">{name.data.title}</h3>
+              <h3 className="nasa easy-white intro-head">{name.data.title}</h3>
               <p className="about-intro-content">{name.data.p}</p>
             </div>
           </div>
