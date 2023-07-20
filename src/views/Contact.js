@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import emailjs from 'emailjs-com'
+import logo from '../media/gg312.png';
+import bg from '../media/shut.png';
 import '../index.css'
 
 const Contact = () => {
@@ -56,6 +58,14 @@ const Contact = () => {
   }, [isSubmitted])
   return (
     <div className="contact-container pg-wrap">
+         <img
+    src={bg}
+    alt="Background Image"
+    className="background-image"
+  />
+        <div className="logo-container">
+        <img src={logo} alt="logo Image" className="logo" />
+      </div>
       {isSubmitted && (
         <div className="popup">
           <h2>Sent Successfully</h2>
@@ -68,6 +78,12 @@ const Contact = () => {
         </div>
       )}
       <div className="form-container">
+      <div className="contact-details">
+        <h2>Contact Details</h2>
+        <p><span className='oswald'>Email: </span> <a className='con-link' href='mailto:info@galacticgetaways.com' target="_blank"> info@galacticgetaways.com</a></p>
+        <p><span className='oswald'> Phone: </span> <a className='con-link' href='tel:+1 (123) 456-7890' target="_blank"> +1 (123) 456-7890</a></p>
+        <p><span className='oswald'> Address: </span><a className='con-link' href="https://www.google.com/maps/search/?api=1&query=28.5729,-80.6490" target="_blank"> 1234 Space Street, Galaxy</a></p>
+      </div>
         <form className="contact-form" onSubmit={handleSubmit}>
           <h1>Contact Us</h1>
           <div className="form-group name">
@@ -140,7 +156,9 @@ const Contact = () => {
             <button type="submit">Submit</button>
           </div>
         </form>
+
       </div>
+      
     </div>
   )
 }

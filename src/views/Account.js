@@ -3,6 +3,7 @@ import { getAuth, updateProfile, onAuthStateChanged, signOut } from 'firebase/au
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { FiLogOut, FiEdit3, FiCheck } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
+import logo from '../media/gg312.png';
 
 const AccountPage = () => {
   const [user, setUser] = useState(null);
@@ -91,6 +92,9 @@ const AccountPage = () => {
 
   return (
     <div className="account-page">
+       <div className="logo-container">
+        <img src={logo} alt="logo Image" className="logo" />
+      </div>
       <h1 className="account-heading">Account Page</h1>
       {user && (
         <div className="user-info">
