@@ -76,9 +76,9 @@ const Home = () => {
           Your browser does not support the video tag.
         </video>
       </div>
-      <div className="button-container">
+      {/* <div className="button-container">
        <Link to='/wfd'> <button>Start Your Space Adventure</button></Link>
-      </div>
+      </div> */}
       <div className="home-content">
       {info.map((name, index) => (
          <div  key={index} className={`point ${index === info.length - 1 ? 'last-item' : ''}`}>

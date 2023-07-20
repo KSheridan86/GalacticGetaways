@@ -5,7 +5,7 @@ const AccountDesktop = () => {
     <div className="wireframe-container">
       <div className="main-content desktop-view">
         <div className="account-page-desktop">
-          <h1 className="account-heading">Account Page</h1>
+          <h1 className="intro-head">Account Page</h1>
           <div className="user-info">
             <div className="avatar-container">
               <img src="avatar-placeholder.png" alt="Avatar" className="avatar" />

@@ -95,7 +95,7 @@ const AccountPage = () => {
        <div className="logo-container">
         <img src={logo} alt="logo Image" className="logo" />
       </div>
-      <h1 className="account-heading">Account Page</h1>
+      <h1 className="intro-head">Account Page</h1>
       {user && (
         <div className="user-info">
           <div className="edit-button">
