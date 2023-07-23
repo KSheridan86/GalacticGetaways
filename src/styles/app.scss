@@ -1453,3 +1453,31 @@ body {
     }
   }
   
+
+
+  .back-to-top-button{
+    font-size: 2rem;
+    border: none;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    z-index: 1000;
+    // opacity: 1;
+    // visibility: visible;
+    // opacity: 0;
+    // visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    animation: bounce .5s infinite alternate;
+  }
+  .back-to-top-button.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  @keyframes bounce {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-15px);
+    }
+  }
