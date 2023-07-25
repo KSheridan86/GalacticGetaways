@@ -42,7 +42,7 @@ const App = () => {
 
   return (
       <div className='app'>
-        <ScrollToTop />
+        <ScrollToTop>
         <DeskNav isLoggedIn={isLoggedIn} />
         <Nav isLoggedIn={isLoggedIn} />
         <Routes>
@@ -57,6 +57,7 @@ const App = () => {
           <Route path="/privacy" element={<Privacy />} />
         </Routes>
         <Footer />
+        </ScrollToTop>
       </div>
   );
 };
