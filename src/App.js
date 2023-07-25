@@ -12,6 +12,10 @@ import { auth } from './firebase';
 import WireframeDisplay from './components/WireframeDisplay';
 import ScrollToTop from './components/ScrollToTop';
 import './styles/app.scss'
+import DeskNav from './components/DeskNav';
+import Footer from './components/Footer';
+import Terms from './views/Terms';
+import Privacy from './views/Privacy';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,6 +43,7 @@ const App = () => {
   return (
       <div className='app'>
         <ScrollToTop />
+        <DeskNav isLoggedIn={isLoggedIn} />
         <Nav isLoggedIn={isLoggedIn} />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -48,7 +53,10 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Routes>
+        <Footer />
       </div>
   );
 };

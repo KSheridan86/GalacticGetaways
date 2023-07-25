@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getAuth, updateProfile, onAuthStateChanged, signOut } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { db } from '../firebase'
+import { collection, getDocs } from 'firebase/firestore'
 import { FiLogOut, FiEdit3, FiCheck } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import logo from '../media/gg312.png';
@@ -12,6 +14,7 @@ const AccountPage = () => {
   const [avatar, setAvatar] = useState('');
   const [isEditMode, setIsEditMode] = useState(false);
   const [avatarFile, setAvatarFile] = useState(null);
+  const [bookings, setBookings] = useState([])
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -73,6 +76,32 @@ const AccountPage = () => {
       }
     }
   };
+
+  useEffect(() => {
+    async function getBookings() {
+      try {
+        const nameCollectionRef = collection(db, 'bookings')
+        const querySnapshot = await getDocs(nameCollectionRef)
+        const data = querySnapshot.docs.map(doc => ({
+          data: doc.data(),
+          id: doc.id,
+        }))
+        function time() {
+          // Convert seconds to milliseconds
+          const milliseconds = bookings.data.time.seconds * 1000;
+          // Create a new Date object using the milliseconds
+          const date = new Date(milliseconds);
+          return date;
+        }
+        time()
+        setBookings(data)
+      } catch (error) {
+        console.log('Error getting Bookings:', error)
+      }
+    }
+    getBookings()
+   
+  }, [])
 
   const handleSignOut = () => {
     const auth = getAuth();
@@ -154,6 +183,17 @@ const AccountPage = () => {
               />
             </div>
           )}
+          {bookings.map((b,i) => (
+            <div className='booking' key={i}>
+              {console.log(bookings)}
+              <ul>
+                <li>
+                {b.data["tour-package"]}{b.data.status}
+                 
+                </li>
+              </ul>
+            </div>
+          ))}
           <button className="sign-out-button" onClick={handleSignOut}>
             <FiLogOut />
             <span>Sign Out</span>

@@ -4,6 +4,7 @@ import { db } from '../firebase'
 import { Link } from 'react-router-dom'
 // import cloudinary from '../optimize/Cloud';
 // import { AdvancedImage } from '@cloudinary/react';
+import DataCard from '../components/DataCard'
 import logo from '../media/gg312.png'
 import fullImage from '../media/shut.png'
 // import Wireframe from '../components/Wireframe'; 
@@ -18,28 +19,33 @@ import image9 from '../media/int3M.png'
 import image1 from '../media/shut.png'
 import image11 from '../media/shut3.png'
 import vid from '../media/ggvid1.mp4'
+import dataBg from '../media/dlaunch.jpg'
 
-const images = [
-  // { id: 1, src: image1, alt: 'Image 1', location: 'section1' },
-  { id: 1, src: image1, alt: 'Image 1', location: 'section2' },
-  { id: 2, src: image7, alt: 'Image 2', location: 'section1' },
-  { id: 3, src: image3, alt: 'Image 3', location: 'section1' },
-  { id: 6, src: image6, alt: 'Image 6', location: 'section1' },
-  { id: 9, src: image9, alt: 'Image 9', location: 'section1' },
-  
-  
-  
-  
-  
-  
-  { id: 11, src: image11, alt: 'Image 11', location: 'section1' },
-  { id: 7, src: image2, alt: 'Image 7', location: 'section1' },
-  { id: 8, src: image8, alt: 'Image 8', location: 'section2' },
-  { id: 5, src: image5, alt: 'Image 5', location: 'section2' },
-  { id: 9, src: image9, alt: 'Image 9', location: 'section1' },
-  { id: 10, src: image5, alt: 'Image 10', location: 'section2' },
-  { id: 4, src: image6, alt: 'Image 4', location: 'section1' },
+const data = [
+  {1: '/contact'},
+  {2: '/tours'},
+  {3: '/contact'},
+  {4: '/tours'},
+  {5: '/contact'},
+  {6: '/tours'},
+  {7: '/contact'},
+  {8: '/tours'},
 ]
+// const images = [
+//   // { id: 1, src: image1, alt: 'Image 1', location: 'section1' },
+//   { id: 1, src: image1, alt: 'Image 1', location: 'section2' },
+//   { id: 2, src: image7, alt: 'Image 2', location: 'section1' },
+//   { id: 3, src: image3, alt: 'Image 3', location: 'section1' },
+//   { id: 6, src: image6, alt: 'Image 6', location: 'section1' },
+//   { id: 9, src: image9, alt: 'Image 9', location: 'section1' },
+//   { id: 11, src: image11, alt: 'Image 11', location: 'section1' },
+//   { id: 7, src: image2, alt: 'Image 7', location: 'section1' },
+//   { id: 8, src: image8, alt: 'Image 8', location: 'section2' },
+//   { id: 5, src: image5, alt: 'Image 5', location: 'section2' },
+//   { id: 9, src: image9, alt: 'Image 9', location: 'section1' },
+//   { id: 10, src: image5, alt: 'Image 10', location: 'section2' },
+//   { id: 4, src: image6, alt: 'Image 4', location: 'section1' },
+// ]
 const Home = () => {
   const [info, setInfo] = useState([])
 
@@ -76,25 +82,10 @@ const Home = () => {
           Your browser does not support the video tag.
         </video>
       </div>
-      {/* <div className="button-container">
-       <Link to='/wfd'> <button>Start Your Space Adventure</button></Link>
-      </div> */}
       <div className="home-content">
+        <div className="bgol"></div>
       {info.map((name, index) => (
-         <div  key={index} className={`point ${index === info.length - 1 ? 'last-item' : ''}`}>
-          <div className="intro">
-            <img
-              src={images[index].src}
-              alt={images[index].alt}
-              className='images-home gradient-border rounded-image btn-home'
-            />
-            <h2 className="intro-head">{name.data.Header}</h2>
-            <p className="intro-content">{name.data.Body}</p>
-            <div className="button-container mapbtn">
-        <button>Start Your Space Adventure</button>
-      </div>
-          </div>
-        </div>
+        <DataCard key={index} name={name} link={data[index].link} index={index} />
       ))}
         </div>
     </div>

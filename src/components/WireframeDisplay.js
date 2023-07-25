@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import HomeWF from './HomeWF';
-import HomeTablet from './HomeTablet';
-import HomeDesktop from './HomeDesktop';
 import ContactWF from './ContactWF';
-import ContactTablet from './ContactTablet';
-import ContactDesktop from './ContactDesktop';
 import AccountWF from './AccountWF';
-import AccountTablet from './AccountTablet';
-import AccountDesktop from './AccountDesktop';
 import LoginWF from './LoginWF';
-import LoginTablet from './LoginTablet';
+
 
 const WireframeDisplay = () => {
     const [viewType, setViewType] = useState('mobile');

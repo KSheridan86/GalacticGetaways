@@ -74,42 +74,7 @@ const Contact = () => {
         </div>
       )}
       <div className="form-container">
-        <div className="contact-details">
-          <h2 className="intro-head">Contact Details</h2>
-          <p>
-            <span className="oswald">Email: </span>{' '}
-            <a
-              className="con-link"
-              href="mailto:info@galacticgetaways.com"
-              target="_blank"
-            >
-              {' '}
-              info@galacticgetaways.com
-            </a>
-          </p>
-          <p>
-            <span className="oswald"> Phone: </span>{' '}
-            <a
-              className="con-link"
-              href="tel:+1 (123) 456-7890"
-              target="_blank"
-            >
-              {' '}
-              +1 (123) 456-7890
-            </a>
-          </p>
-          <p>
-            <span className="oswald"> Address: </span>
-            <a
-              className="con-link"
-              href="https://www.google.com/maps/search/?api=1&query=28.5729,-80.6490"
-              target="_blank"
-            >
-              {' '}
-              1234 Space Street, Galaxy
-            </a>
-          </p>
-        </div>
+       
         <form className="contact-form" onSubmit={handleSubmit}>
           <h1 className="intro-head">Contact Us</h1>
           <div className="form-group name">
@@ -181,6 +146,42 @@ const Contact = () => {
             <button type="submit">Submit</button>
           </div>
         </form>
+        <div className="contact-details">
+          <h2 className="intro-head">Contact Details</h2>
+          <p>
+            <span className="oswald">Email: </span>{' '}
+            <a
+              className="con-link"
+              href="mailto:info@galacticgetaways.com"
+              target="_blank"
+            >
+              {' '}
+              info@galacticgetaways.com
+            </a>
+          </p>
+          <p>
+            <span className="oswald"> Phone: </span>{' '}
+            <a
+              className="con-link"
+              href="tel:+1 (123) 456-7890"
+              target="_blank"
+            >
+              {' '}
+              +1 (123) 456-7890
+            </a>
+          </p>
+          <p>
+            <span className="oswald"> Address: </span>
+            <a
+              className="con-link"
+              href="https://www.google.com/maps/search/?api=1&query=28.5729,-80.6490"
+              target="_blank"
+            >
+              {' '}
+              1234 Space Street, Galaxy
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   )
