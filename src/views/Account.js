@@ -86,14 +86,14 @@ const AccountPage = () => {
           data: doc.data(),
           id: doc.id,
         }))
-        function time() {
+        // function time() {
           // Convert seconds to milliseconds
-          const milliseconds = bookings.data.time.seconds * 1000;
+          // const milliseconds = bookings.data.time.seconds * 1000;
           // Create a new Date object using the milliseconds
-          const date = new Date(milliseconds);
-          return date;
-        }
-        time()
+          // const date = new Date(milliseconds);
+        //   return date;
+        // }
+        // time()
         setBookings(data)
       } catch (error) {
         console.log('Error getting Bookings:', error)
@@ -183,13 +183,21 @@ const AccountPage = () => {
               />
             </div>
           )}
+          <h3 className='nasa'>Bookings</h3>
           {bookings.map((b,i) => (
             <div className='booking' key={i}>
               {console.log(bookings)}
               <ul>
                 <li>
-                {b.data["tour-package"]}{b.data.status}
-                 
+                <p><strong>Package: </strong>  {b.data.package}</p>
+                </li>
+                <li>
+                <p><strong>Status: </strong>  {b.data.status}</p>
+                </li>
+                <li>
+                <p><strong>Date: </strong> {new Date(b.data.date.seconds).toString()}</p>
+                
+                
                 </li>
               </ul>
             </div>
