@@ -14,7 +14,7 @@ const Tours = () => {
     const map = L.map(mapContainerRef.current, {
       zoomControl: false,
       attributionControl: false,
-    }).setView([0, 0], 4)
+    }).setView([0, 0], 2)
     const accessToken =
       'pk.eyJ1Ijoia2Vuc2hlcmlkYW4iLCJhIjoiY2xrMzVzOWV2MGhuZDNtb3l6d3NsbXZ2NiJ9.Vpu3VEdqd0SXcsk7FrrDMA'
 
@@ -32,8 +32,8 @@ const Tours = () => {
 
     const markerIcon = L.icon({
       iconUrl: spaceStationIcon,
-      iconSize: [50, 50],
-      iconAnchor: [25, 25],
+      iconSize: [30, 30],
+      iconAnchor: [10, 25],
     })
 
     const marker = L.marker(map.getCenter(), { icon: markerIcon }).addTo(map)
@@ -69,19 +69,36 @@ const Tours = () => {
         <img src={logo} alt="logo Image" className="logo" />
       </div>
       <div className="star-image outer-container">
-        <h1 className="nasa page-title">Tours</h1>
+        {/* <h1 className="nasa page-title">Tours</h1> */}
         <div className="outer-map">
           <div ref={mapContainerRef} id="map-container" />
         </div>
 
         <div className="glass-box" id="box">
           <div className="tours-info-box">
-            {Object.entries(issData).map(([key, value]) => (
+          { issData ? 
+          <div>
+            <h2 className="data-title">International Space Station</h2>
+            <div>Make your trip complete with a visit to the International Space Station</div>
+            <br></br>
+            <p>Current Real time information from the space station.</p>
+            <div>Ground Speed: {issData.velocity} km/h</div>
+            <div>Latitude: {issData.latitude}</div>
+            <div>Longitude: {issData.longitude}</div>
+          </div>: 
+          <div>
+            <h2 className="data-title">International Space Station</h2>
+            <div>Make your trip complete with a stop off on the International Space Station</div>
+            <p>Loading Data......</p>
+          </div> }
+            {/* {Object.entries(issData).map(([key, value]) => (
               <p key={key}>
                 {key}: {value}
               </p>
-            ))}
+            ))} */}
           </div>
+      
+          
         </div>
         <button className="btn-spacing"> Book Your Tour</button>
       </div>

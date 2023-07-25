@@ -139,6 +139,7 @@ button {
   background-color: #f7f7f7;
   padding: 20px;
   box-sizing: border-box;
+  margin-top: 2rem;
 }
 
 /* NAVIGATION */
@@ -716,7 +717,7 @@ input:focus, textarea:focus, select:focus  {
   padding: 20px;
   box-sizing: border-box;
   border-radius: 50%;
-  box-shadow: 0 5px 50px rgba(0, 0, 0, 0.3), 0 2px 10px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 0 5px 30px rgba(253, 232, 174, 0.3), 0 2px 10px rgba(253, 232, 174, 0.3) inset;
 }
 
 .outer-container {
