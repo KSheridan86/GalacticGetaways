@@ -62,6 +62,7 @@ const Tours = () => {
       map.remove()
     }
   }, [])
+  
 
   return (
     <div className="tours-container">
@@ -78,13 +79,14 @@ const Tours = () => {
           <div className="tours-info-box">
           { issData ? 
           <div>
-            <h2 className="data-title">International Space Station</h2>
+            <h2 className="nasa">International Space Station</h2>
             <div>Make your trip complete with a visit to the International Space Station</div>
             <br></br>
             <p>Current Real time information from the space station.</p>
-            <div>Ground Speed: {issData.velocity} km/h</div>
+            <div>Ground Speed: {issData.velocity.toFixed(2)} Km/h</div>
             <div>Latitude: {issData.latitude}</div>
             <div>Longitude: {issData.longitude}</div>
+            <div>Height above the surface: {issData.altitude.toFixed(2)} Km</div>
           </div>: 
           <div>
             <h2 className="data-title">International Space Station</h2>
