@@ -8,7 +8,7 @@
 }
 
 $column-margin-right: 20px;
-$bottom-bar-bg-color: #222;
+$bottom-bar-bg-color: #171717;
 $primary-color: #b92eff;
 
 body,
@@ -17,7 +17,6 @@ html {
   user-select: none;
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
   overflow-x: hidden;
   font-family: 'Lato', Arial, sans-serif;
@@ -26,6 +25,10 @@ html {
 body {
   background-color: #111;
   color: #fff;
+}
+
+.nasa {
+  font-family: 'NASA', sans-serif;
 }
 
 h1,
@@ -188,7 +191,20 @@ button {
     }
   }
 }
-
+.bottom-bar {
+  background-color: $bottom-bar-bg-color;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 200;
+  // font-size: 1.3em;
+  color: $primary-color;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 60px;
+  padding: 5px;
+  text-align: center;
+  p{
+    margin: 0;
+  }
+}
 .footer {
   background-image: linear-gradient(
     159deg,
@@ -337,10 +353,6 @@ button {
   background-color: #000;
 }
 
-.pg-wrap {
-  /* height: calc(100vh - 60px); */
-}
-
 .login-container {
   display: flex;
   flex-direction: column;
@@ -351,14 +363,7 @@ button {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
-// .login-container {
-//   width: 100%;
-//   height: 100vh;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   flex-direction: column;
-// }
+
 
 .full-image-container {
   position: relative;
@@ -499,7 +504,14 @@ button {
   text-transform: uppercase;
 }
 /* ACCOUNT */
-
+.booking {
+  border: 1px solid #b92eff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+    ul {
+      list-style: none;
+  }
+}
 .account-page {
   display: flex;
   flex-direction: column;
@@ -642,7 +654,6 @@ input:focus, textarea:focus, select:focus  {
   min-height: 100vh;
   background-color: #111;
   color: #fff;
-  // padding: 20px;
 }
 
 .page-title {
@@ -677,11 +688,6 @@ input:focus, textarea:focus, select:focus  {
   color: #fff;
 }
 
-// .outer-container {
-//   margin: 0rem 0rem 5rem 0rem;
-
-// }
-
 .star-image {
   background-image: url('../media/stars-mobile.webp');
   background-size: cover;
@@ -697,10 +703,7 @@ input:focus, textarea:focus, select:focus  {
 }
 
 .glass-box {
-  // border: 1px solid rgba(255, 255, 255, 0.3);
-  // box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  // backdrop-filter: blur(8px);
-  // -webkit-backdrop-filter: blur(8px);
+
   border-radius: 10px;
   width: 90%;
   color: #fff;
@@ -709,8 +712,6 @@ input:focus, textarea:focus, select:focus  {
 
 #map-container {
   width: 40vh;
-
-  /* Use vh to maintain the aspect ratio, adjust as needed */
   height: 40vh;
   background-color: #f7f7f7;
   padding: 20px;
@@ -1530,7 +1531,7 @@ body {
 }
 
 
-
+// ************************************************************** MEDIA ****************************************************************
 /* Tablet & Desktop version */
 
 @media only screen and (min-width: 728px) {
@@ -1758,11 +1759,9 @@ body {
     }
   }
 
-.bottom-bar {
-  background-color: $bottom-bar-bg-color;
-  padding: 10px;
-  text-align: center;
-}
+  .bottom-bar {
+    margin-bottom: 0;
+  }
   .home-content {
     background-image: url('../media/stargb.jpg');
     object-fit: cover;
