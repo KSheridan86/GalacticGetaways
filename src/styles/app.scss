@@ -657,7 +657,9 @@ input:focus, textarea:focus, select:focus  {
   align-items: center;
   flex-direction: column;
   text-align: center;
+  padding: 2rem;
 }
+
 
 .about-intro-content {
   margin-top: 10px;
@@ -675,8 +677,16 @@ input:focus, textarea:focus, select:focus  {
   color: #fff;
 }
 
-.outer-container {
-  margin: 0rem 0rem 5rem 0rem;
+// .outer-container {
+//   margin: 0rem 0rem 5rem 0rem;
+
+// }
+
+.star-image {
+  background-image: url('../media/stars-mobile.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .page-title {
@@ -687,12 +697,12 @@ input:focus, textarea:focus, select:focus  {
 }
 
 .glass-box {
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  // border: 1px solid rgba(255, 255, 255, 0.3);
+  // box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  // backdrop-filter: blur(8px);
+  // -webkit-backdrop-filter: blur(8px);
   border-radius: 10px;
-  width: 100%;
+  width: 90%;
   color: #fff;
   max-width: 600px;
 }
@@ -1977,6 +1987,19 @@ body {
 }
 
   
+// Kens new styles
+
+.btn-spacing {
+  margin-bottom: 3rem;
+}
+.point {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  margin: 2rem 1rem;
+  padding: .5rem;
+}
 
 
   .back-to-top-button{

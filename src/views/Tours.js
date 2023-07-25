@@ -68,7 +68,7 @@ const Tours = () => {
       <div className="logo-container">
         <img src={logo} alt="logo Image" className="logo" />
       </div>
-      <div className="outer-container">
+      <div className="star-image outer-container">
         <h1 className="nasa page-title">Tours</h1>
         <div className="outer-map">
           <div ref={mapContainerRef} id="map-container" />
@@ -83,7 +83,7 @@ const Tours = () => {
             ))}
           </div>
         </div>
-        <button> Book Your Tour</button>
+        <button className="btn-spacing"> Book Your Tour</button>
       </div>
     </div>
   )
