@@ -9,6 +9,10 @@ import spaceStationIcon from '../media/space-station.png'
 const Tours = () => {
   const mapContainerRef = useRef(null)
   const [issData, setIssData] = useState({})
+  const [speed, setSpeed] = useState(0)
+  const [altitude, setAltitude] = useState(0)
+  const [latitude, setLatitude] = useState(0)
+  const [longitude, setLongitude] = useState(0)
 
   useEffect(() => {
     if (!mapContainerRef.current) return
@@ -46,6 +50,10 @@ const Tours = () => {
         )
         const data = await response.json()
         setIssData(data)
+        setAltitude(data.altitude)
+        setSpeed(data.velocity)
+        setLatitude(data.latitude)
+        setLongitude(data.longitude)
         const { latitude, longitude } = data
         const latLng = L.latLng(latitude, longitude)
         map.panTo(latLng)
@@ -81,13 +89,20 @@ const Tours = () => {
           { issData ? 
           <div>
             <h2 className="nasa">International Space Station</h2>
-            <div>Make your trip complete with a visit to the International Space Station</div>
-            <br></br>
-            <p>Current Real time information from the space station.</p>
-            <div>Height above the surface: {issData.altitude.toFixed(2)} Km</div>
-            <div>Ground Speed: {issData.velocity.toFixed(2)} Km/h</div>
-            <div>Latitude: {issData.latitude}</div>
-            <div>Longitude: {issData.longitude}</div>
+            <div>Step into the shoes of astronauts and witness Earth from the vantage point of the 
+              ISS as it orbits our planet at incredible speeds. 
+              <hr />
+              Brace yourself for an awe-inspiring adventure as you track the ISS's trajectory, 
+              watch breathtaking sunrises and sunsets from space, and observe captivating views of our 
+              beautiful blue planet from above.
+              <hr />
+            </div>
+            
+            <p>Real time information from the space station:</p>
+            <div className="nasa">Altitude: {altitude.toFixed(2)} Km</div>
+            <div>Ground Speed: {speed.toFixed(2)} Km/h</div>
+            <div>Latitude: {latitude}</div>
+            <div>Longitude: {longitude}</div>
             
           </div>: 
           <div>
@@ -96,7 +111,7 @@ const Tours = () => {
             <p>Loading Data......</p>
           </div> }
 
-            <MapContainer lat={issData.latitude} long={issData.longitude} />
+            {/* <MapContainer lat={issData.latitude} long={issData.longitude} /> */}
           </div>
       
           
