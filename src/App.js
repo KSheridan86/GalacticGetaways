@@ -11,6 +11,7 @@ import Account from './views/Account';
 import { auth } from './firebase';
 import WireframeDisplay from './components/WireframeDisplay';
 import ScrollToTop from './components/ScrollToTop';
+import ScrollUp from './components/ScrollUp';
 import './styles/app.scss'
 import DeskNav from './components/DeskNav';
 import Footer from './components/Footer';
@@ -43,6 +44,7 @@ const App = () => {
   return (
       <div className='app'>
         <ScrollToTop>
+          <ScrollUp />
         <DeskNav isLoggedIn={isLoggedIn} />
         <Nav isLoggedIn={isLoggedIn} />
         <Routes>

@@ -11,6 +11,9 @@ function ScrollToTop({ children }) {
       });
     
   }, [location]);
+
+  
+
   return <>{children}</>;
 }
 export default ScrollToTop;

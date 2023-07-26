@@ -84,21 +84,18 @@ const Tours = () => {
             <div>Make your trip complete with a visit to the International Space Station</div>
             <br></br>
             <p>Current Real time information from the space station.</p>
+            <div>Height above the surface: {issData.altitude.toFixed(2)} Km</div>
             <div>Ground Speed: {issData.velocity.toFixed(2)} Km/h</div>
             <div>Latitude: {issData.latitude}</div>
             <div>Longitude: {issData.longitude}</div>
-            <div>Height above the surface: {issData.altitude.toFixed(2)} Km</div>
+            
           </div>: 
           <div>
             <h2 className="data-title">International Space Station</h2>
             <div>Make your trip complete with a stop off on the International Space Station</div>
             <p>Loading Data......</p>
           </div> }
-            {/* {Object.entries(issData).map(([key, value]) => (
-              <p key={key}>
-                {key}: {value}
-              </p>
-            ))} */}
+
             <MapContainer lat={issData.latitude} long={issData.longitude} />
           </div>
       

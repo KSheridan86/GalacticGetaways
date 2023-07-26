@@ -20,6 +20,7 @@ import image1 from '../media/shut.png'
 import image11 from '../media/shut3.png'
 import vid from '../media/ggvid1.mp4'
 import dataBg from '../media/dlaunch.jpg'
+import background from '../media/stars-mobile.webp'
 
 const data = [
   {1: '/contact'},
@@ -67,7 +68,7 @@ const Home = () => {
   }, [])
 
   return (
-    <div className="home-container pg-wrap">
+    <div className="star-image home-container pg-wrap">
       <div className="logo-container">
         <img src={logo} alt="logo Image" className="logo" />
       </div>
@@ -83,6 +84,9 @@ const Home = () => {
         </video>
       </div>
       <div className="home-content">
+      
+        <img src={background} className="bg-image"/>
+      
         <div className="bgol"></div>
       {info.map((name, index) => (
         <DataCard key={index} name={name} link={data[index].link} index={index} />

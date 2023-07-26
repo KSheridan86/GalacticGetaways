@@ -376,8 +376,8 @@ This can be done by:
 ## Author Info
 
 Luke O'Hanlon, Full Stack Software Developer.
-- [GitHub](https://github.com/luke0han)
-- [Linkedin](https://www.linkedin.com)
+- [GitHub](https://github.com/luke0hanlon)
+- [Linkedin](https://www.linkedin.com/in/)
 
 
 Ken Sheridan, Full Stack Software Developer.

@@ -18,7 +18,7 @@ const MapContainer = ({ lat, long }) => {
       };
   return (
     <LoadScript  googleMapsApiKey="AIzaSyBQlC4UabIeuKI4239cckHSqh5wouPW248">
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={3}>
         <Marker position={{ lat: lat, lng: long }} />
       </GoogleMap>
     </LoadScript>
