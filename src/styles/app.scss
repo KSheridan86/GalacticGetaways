@@ -311,9 +311,15 @@ button {
         background-color: #00000071 !important;
       }
     }
+
+    .hide {
+      display: none;
+    }
     
   }
 }
+
+
 /* LOGO */
 
 .logo-container {
@@ -632,6 +638,10 @@ input:focus, textarea:focus, select:focus  {
   .user-email {
     font-size: 16px;
   }
+  
+    .footer .column .hide {
+      display: block;
+    }
 }
 
 /* Tablet Styles */
@@ -1807,13 +1817,21 @@ body {
   }
   .bgol {
     position: absolute;
-
     width: 100%;
     height: -webkit-fill-available;
     z-index: 3;
     background-color: rgba(0, 0, 0, 0.5);
-
   }
+  .about-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 10%;
+    overflow: hidden;
+    margin-top: -6rem;
+  }
+
+
   .full-image-container {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
 
@@ -2055,6 +2073,7 @@ body {
   border-radius: 10px;
   margin: 2rem 1rem;
   padding: .5rem;
+  // flex-basis: calc(50% - 2rem);
 }
 
   .img-shadow {

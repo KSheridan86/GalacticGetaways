@@ -27,10 +27,9 @@ const About = () => {
   return (
     <div className="star-image about-container">
       <div className="logo-container">
-        <img src={logo} alt="logo Image" className="logo" />
+        <img src={logo} alt="company logo" className="logo" />
       </div>
-      {/* <h1 className="nasa page-title">About</h1> */}
-      <div className="">
+      <div className="about-content">
         {info.map((name, index) => (
           <div className="point" key={index}>
             <div className="about-intro">

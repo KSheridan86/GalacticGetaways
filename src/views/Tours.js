@@ -76,10 +76,9 @@ const Tours = () => {
   return (
     <div className="tours-container">
       <div className="logo-container">
-        <img src={logo} alt="logo Image" className="logo" />
+        <img src={logo} alt="company logo" className="logo" />
       </div>
       <div className="star-image outer-container">
-        {/* <h1 className="nasa page-title">Tours</h1> */}
         <div className="outer-map">
           <div ref={mapContainerRef} id="map-container" />
         </div>
@@ -88,26 +87,40 @@ const Tours = () => {
           <div className="tours-info-box">
           { issData ? 
           <div>
-            <h2 className="nasa">International Space Station</h2>
+            <h2 className="nasa con-link">International Space Station</h2>
             <div>Step into the shoes of astronauts and witness Earth from the vantage point of the 
               ISS as it orbits our planet at incredible speeds. 
               <hr />
-              Brace yourself for an awe-inspiring adventure as you track the ISS's trajectory, 
+              Brace yourself for an awe-inspiring adventure, 
               watch breathtaking sunrises and sunsets from space, and observe captivating views of our 
               beautiful blue planet from above.
               <hr />
             </div>
             
-            <p>Real time information from the space station:</p>
-            <div className="nasa">Altitude: {altitude.toFixed(2)} Km</div>
-            <div>Ground Speed: {speed.toFixed(2)} Km/h</div>
-            <div>Latitude: {latitude}</div>
-            <div>Longitude: {longitude}</div>
+            <p>Current status of the space station:</p>
+            <div className="nasa">Altitude: </div> 
+            <div> {altitude.toFixed(2)} Km</div>
+            <br />
+            <div className="nasa">Ground Speed: </div> 
+            <div>{speed.toFixed(2)} Km/h</div>
+            <br />
+            <div className="nasa">Latitude: </div>
+            <div>{latitude}</div>
+            <br />
+            <div className="nasa">Longitude: </div> 
+            <div>{longitude}</div>
             
           </div>: 
           <div>
             <h2 className="data-title">International Space Station</h2>
-            <div>Make your trip complete with a stop off on the International Space Station</div>
+            <div>Step into the shoes of astronauts and witness Earth from the vantage point of the 
+              ISS as it orbits our planet at incredible speeds. 
+              <hr />
+              Brace yourself for an awe-inspiring adventure, 
+              watch breathtaking sunrises and sunsets from space, and observe captivating views of our 
+              beautiful blue planet from above.
+              <hr />
+            </div>
             <p>Loading Data......</p>
           </div> }
 

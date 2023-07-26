@@ -43,8 +43,8 @@ const Footer = () => {
     <>
       <footer className="footer">
         <div className="column">
-          <h3>Menu</h3>
-          <ul className="footer-menu">
+          <h3 className="hide">Menu</h3>
+          <ul className="footer-menu hide">
             <li className="footer-item">
               {' '}
               <NavLink to="/">Home</NavLink>
