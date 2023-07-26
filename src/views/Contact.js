@@ -74,7 +74,6 @@ const Contact = () => {
         </div>
       )}
       <div className="form-container">
-       
         <form className="contact-form" onSubmit={handleSubmit}>
           <h1 className="intro-head">Contact Us</h1>
           <div className="form-group name">
@@ -181,6 +180,17 @@ const Contact = () => {
               1234 Space Street, Galaxy
             </a>
           </p>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14015.585941671949!2d-80.66743470060287!3d28.572870951752932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e74b95a365c6fd%3A0x8b7339f246f869dd!2sGalactic%20Getaways!5e0!3m2!1sen!2sie!4v1690376409690!5m2!1sen!2sie"
+            width="300"
+            height="200"
+            icon="none"
+            style={{ border: '0', borderRadius: '5px', boxShadow: ' 4px 4px 10px rgba(0,0,0,0.6)', marginTop: '20px' }}
+            allowFullScreen=""
+            loading="lazy"
+            // referrerPolicy="no-referrer-when-downgrade"
+            title="Galactic Getaways"
+          ></iframe>
         </div>
       </div>
     </div>

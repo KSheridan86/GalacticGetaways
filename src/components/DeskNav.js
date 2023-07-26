@@ -2,8 +2,14 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { HiChevronDown } from 'react-icons/hi'
 import logo from '../media/gg312.png'
+import { getAuth } from 'firebase/auth';
+ 
 
 const DeskNav = () => {
+  // const location = useLocation();
+  const auth = getAuth();
+  const isLoggedIn = auth.currentUser !== null;
+
   return (
     <nav className={`navbar`}>
       <div className="navbar-logo">
@@ -53,9 +59,15 @@ const DeskNav = () => {
           </ul>
         </li>
         <li>
-          <NavLink className="nov" to="/login">
-            <button className="nav-btn">Login</button>
+        {isLoggedIn ? (
+          <NavLink className="nov" to="/account">
+            <button className="nav-btn">Account</button>
           </NavLink>
+        ) : (
+          <NavLink className="nov" to="/login">
+          <button className="nav-btn">Login</button>
+        </NavLink>
+        )}
         </li>
       </ul>
     </nav>
