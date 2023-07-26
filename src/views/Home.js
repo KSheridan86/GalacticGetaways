@@ -70,11 +70,11 @@ const Home = () => {
   return (
     <div className="star-image home-container pg-wrap">
       <div className="logo-container">
-        <img src={logo} alt="logo Image" className="logo" />
+        <img src={logo} alt="company logo" className="logo" />
       </div>
       <div className="full-image-container">
         <div className="full-image-overlay">
-          <img src={fullImage} alt="Full Image" className="full-image" />
+          <img src={fullImage} alt="stars" className="full-image" />
         </div>
       </div>
       <div className="intro-video">

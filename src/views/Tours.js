@@ -9,6 +9,10 @@ import spaceStationIcon from '../media/space-station.png'
 const Tours = () => {
   const mapContainerRef = useRef(null)
   const [issData, setIssData] = useState({})
+  const [speed, setSpeed] = useState(0)
+  const [altitude, setAltitude] = useState(0)
+  const [latitude, setLatitude] = useState(0)
+  const [longitude, setLongitude] = useState(0)
 
   useEffect(() => {
     if (!mapContainerRef.current) return
@@ -46,6 +50,10 @@ const Tours = () => {
         )
         const data = await response.json()
         setIssData(data)
+        setAltitude(data.altitude)
+        setSpeed(data.velocity)
+        setLatitude(data.latitude)
+        setLongitude(data.longitude)
         const { latitude, longitude } = data
         const latLng = L.latLng(latitude, longitude)
         map.panTo(latLng)
@@ -68,10 +76,9 @@ const Tours = () => {
   return (
     <div className="tours-container">
       <div className="logo-container">
-        <img src={logo} alt="logo Image" className="logo" />
+        <img src={logo} alt="company logo" className="logo" />
       </div>
       <div className="star-image outer-container">
-        {/* <h1 className="nasa page-title">Tours</h1> */}
         <div className="outer-map">
           <div ref={mapContainerRef} id="map-container" />
         </div>
@@ -80,19 +87,40 @@ const Tours = () => {
           <div className="tours-info-box">
           { issData ? 
           <div>
-            <h2 className="nasa">International Space Station</h2>
-            <div>Make your trip complete with a visit to the International Space Station</div>
-            <br></br>
-            <p>Current Real time information from the space station.</p>
-            <div>Height above the surface: {issData.altitude.toFixed(2)} Km</div>
-            <div>Ground Speed: {issData.velocity.toFixed(2)} Km/h</div>
-            <div>Latitude: {issData.latitude}</div>
-            <div>Longitude: {issData.longitude}</div>
+            <h2 className="nasa con-link">International Space Station</h2>
+            <div>Step into the shoes of astronauts and witness Earth from the vantage point of the 
+              ISS as it orbits our planet at incredible speeds. 
+              <hr />
+              Brace yourself for an awe-inspiring adventure, 
+              watch breathtaking sunrises and sunsets from space, and observe captivating views of our 
+              beautiful blue planet from above.
+              <hr />
+            </div>
+            
+            <p>Current status of the space station:</p>
+            <div className="nasa">Altitude: </div> 
+            <div> {altitude.toFixed(2)} Km</div>
+            <br />
+            <div className="nasa">Ground Speed: </div> 
+            <div>{speed.toFixed(2)} Km/h</div>
+            <br />
+            <div className="nasa">Latitude: </div>
+            <div>{latitude}</div>
+            <br />
+            <div className="nasa">Longitude: </div> 
+            <div>{longitude}</div>
             
           </div>: 
           <div>
             <h2 className="data-title">International Space Station</h2>
-            <div>Make your trip complete with a stop off on the International Space Station</div>
+            <div>Step into the shoes of astronauts and witness Earth from the vantage point of the 
+              ISS as it orbits our planet at incredible speeds. 
+              <hr />
+              Brace yourself for an awe-inspiring adventure, 
+              watch breathtaking sunrises and sunsets from space, and observe captivating views of our 
+              beautiful blue planet from above.
+              <hr />
+            </div>
             <p>Loading Data......</p>
           </div> }
 
