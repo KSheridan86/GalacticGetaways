@@ -20,7 +20,7 @@ import image1 from '../media/shut.png'
 import image11 from '../media/shut3.png'
 import vid from '../media/ggvid1.mp4'
 import dataBg from '../media/dlaunch.jpg'
-import background from '../media/stars-mobile.webp'
+import background from '../media/stargb.jpg'
 
 const data = [
   {1: '/contact'},
