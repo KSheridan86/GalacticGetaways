@@ -3,6 +3,8 @@ import emailjs from 'emailjs-com'
 import logo from '../media/gg312.png'
 import bg from '../media/shut.png'
 import '../index.css'
+import { Map, GoogleApiWrapper, Marker } from '@react-google-maps/api'
+import MapContainer from '../components/MapContainer'
 
 const Contact = () => {
   const [tourPlace, setTourPlace] = useState('')
@@ -11,6 +13,18 @@ const Contact = () => {
   const handleTourPlaceChange = e => {
     setTourPlace(e.target.value)
   }
+  // function initMap() {
+  //   new google.maps.Map(document.getElementById("map"), {
+  //     mapId: "8e0a97af9386fef",
+  //     center: { lat: 48.85, lng: 2.35 },
+  //     zoom: 12,
+  //   });
+  // }
+  
+  // window.initMap = initMap;
+  const mapOptions = {
+    mapId: 'c115b3afa6cb63f6', 
+  };
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -173,24 +187,16 @@ const Contact = () => {
             <span className="oswald"> Address: </span>
             <a
               className="con-link"
-              href="https://www.google.com/maps/search/?api=1&query=28.5729,-80.6490"
+              // href="https://www.google.com/maps/search/?api=1&query=28.5729,-80.6490"
               target="_blank"
             >
               {' '}
               1234 Space Street, Galaxy
             </a>
           </p>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14015.585941671949!2d-80.66743470060287!3d28.572870951752932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e74b95a365c6fd%3A0x8b7339f246f869dd!2sGalactic%20Getaways!5e0!3m2!1sen!2sie!4v1690376409690!5m2!1sen!2sie"
-            width="300"
-            height="200"
-            icon="none"
-            style={{ border: '0', borderRadius: '5px', boxShadow: ' 4px 4px 10px rgba(0,0,0,0.6)', marginTop: '20px' }}
-            allowFullScreen=""
-            loading="lazy"
-            // referrerPolicy="no-referrer-when-downgrade"
-            title="Galactic Getaways"
-          ></iframe>
+          <div>
+          <MapContainer />
+          </div>
         </div>
       </div>
     </div>
