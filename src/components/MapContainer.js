@@ -43,10 +43,10 @@ const MapContainer = () => {
     // Now that the Google Maps API is loaded, you can create the map
     new window.google.maps.Map(document.getElementById('map'), {
       center: center,
+      referrerpolicy: "no-referrer-when-downgrade",
       zoom: 10,
       options: {
-        mapId: 'c115b3afa6cb63f6', // Replace with your Maps Platform ID
-        // styles: , // Apply the custom map style here
+        mapId: 'c115b3afa6cb63f6', 
       },
     });
   };

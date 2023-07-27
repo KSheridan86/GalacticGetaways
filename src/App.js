@@ -41,7 +41,7 @@ const App = () => {
 
   return (
       <div className='app'>
-        <ScrollToTop>
+        {/* <ScrollToTop> */}
           <ScrollUp />
           <DeskNav isLoggedIn={isLoggedIn} />
           <Nav isLoggedIn={isLoggedIn} />

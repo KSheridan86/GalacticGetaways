@@ -9,6 +9,7 @@ import image8 from '../media/int2.png'
 import image9 from '../media/int3M.png'
 import image1 from '../media/dlaunch.jpg'
 import image11 from '../media/shut3.png'
+import image12 from '../media/intkid.png'
 
 const images = [
   // { id: 1, src: image1, alt: 'Image 1', location: 'section1' },
@@ -18,7 +19,8 @@ const images = [
   { id: 3, src: image3, alt: 'Image 3', location: 'section1' },
   { id: 6, src: image6, alt: 'Image 6', location: 'section1' },
   { id: 9, src: image9, alt: 'Image 9', location: 'section1' },
-  { id: 11, src: image11, alt: 'Image 11', location: 'section1' },
+  { id: 12, src: image12, alt: 'Image 12', location: 'section1' },
+  { id: 7, src: image2, alt: 'Image 7', location: 'section1' },
   { id: 7, src: image2, alt: 'Image 7', location: 'section1' },
   { id: 8, src: image8, alt: 'Image 8', location: 'section2' },
   { id: 5, src: image5, alt: 'Image 5', location: 'section2' },
