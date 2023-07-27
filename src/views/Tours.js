@@ -1,11 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { HiChevronDown } from 'react-icons/hi'
+// import ThreeGlobe from 'three-globe';
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-// import Globe from 'globe.gl'
+
 import logo from '../media/gg312.png'
 import spaceStationIcon from '../media/space-station.png'
+
+
+import InteractiveGlobe from '../components/InteractiveGlobe'
 // import Glober from '../components/Globe'
 
 const Tours = () => {
@@ -75,6 +79,8 @@ const Tours = () => {
       
     }
   }, [])
+
+
   console.log(issData)
   const tourData = [
     {
@@ -144,20 +150,8 @@ const Tours = () => {
         </li>
         
       </div>
-      
-      <div className="globe">
-        {/* <Glober long={issData.longitude} lat={issData.lat} /> */}
-      </div>
+     <InteractiveGlobe lat={issData.latitude} long={issData.longitude} />
       <div className="star-image outer-container ">
-        {/* <Glober long={issData.longitude} lat={issData.lat} /> */}
-        {/* <div className="outer-map">
-          <div ref={mapContainerRef} id="map-container" />
-        </div> */}
-        {/* <div className="globeViz">
-          {' '}
-          <Glober long={issData.longitude} lat={issData.lat} />
-        </div> */}
-
         <div className="glass-box" id="box">
           <div className="tours-info-box">
             {issData ? (

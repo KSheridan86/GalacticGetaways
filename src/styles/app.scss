@@ -15,6 +15,13 @@ $primary-color: #b92eff;
   // width: 100%;
   // height: 50%;
 }
+.canvas-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none; 
+}
+
 
 .mapper {
   position: relative;
