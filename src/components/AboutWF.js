@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-const HomeWF = ({ viewType }) => {
+const AboutWF = ({ viewType }) => {
   return (
     <div className="wireframe-container">
       <div className={`main-content ${viewType}-view`}>
@@ -11,9 +11,7 @@ const HomeWF = ({ viewType }) => {
             <h3 className="wf-head">Logo</h3>
             <h4 className="wf-nav">Link1 Link2 Link3 Link4<span className='wf-btn'>Button</span></h4>
           </div>
-          <div className="hero-image-placeholder"></div>
-          <h2 className="wf-head vid">Video</h2>
-          {/* <p>Hero Section Subtitle</p> */}
+          {/* <div className="hero-image-placeholder"></div> */}
         </div>
         <div className="content-wireframe">
           <div className="content-item">
@@ -95,4 +93,4 @@ const HomeWF = ({ viewType }) => {
   )
 }
 
-export default HomeWF
+export default AboutWF
