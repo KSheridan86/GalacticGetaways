@@ -57,7 +57,7 @@ const App = () => {
               <Route path="/privacy" element={<Privacy />} />
             </Routes>
           <Footer />
-        </ScrollToTop>
+        {/* </ScrollToTop> */}
       </div>
   );
 };
