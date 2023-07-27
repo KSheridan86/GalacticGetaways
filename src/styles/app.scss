@@ -1778,65 +1778,12 @@ body {
   }
 }
 
-.wf-txt {
-  background-color: #f1f1f162;
-  width: 100%;
-  color: #888;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.vid {
-  height: 100px;
-  display: flex;
-  align-items: center;
-}
-
-.wf-btn {
-  color: #bbbbbb;
-  background-color: #fff;
-  border: 1px solid #bbbbbb;
-  margin-bottom: 10px;
-}
-
-/* Common styles for both desktop and tablet views */
-
-.wireframe-container {
-  display: flex;
-  flex-direction: column;
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-}
-
-.main-content {
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  margin: 20px;
-  padding: 20px;
-
-  /* For mobile view */
-  width: 368px;
-}
-
-.desktop-view {
-  width: 90%;
-}
-
-.tablet-view {
-  width: 769px;
-}
-
 // ************************************************************** MEDIA ****************************************************************
 /* Tablet & Desktop version */
 
 @media only screen and (min-width: 728px) {
-
   .user-info {
-    width: 100vw ;
+    width: 100vw;
     .nasa {
       font-size: 2em;
     }
@@ -1848,7 +1795,7 @@ body {
       rgba(185, 46, 255, 1) 0%,
       rgba(0, 99, 255, 1) 100%
     );
-    width: 80% ;
+    width: 80%;
     border-radius: 5px;
     padding: 0 20px;
     margin: 0 0 10px 0;
@@ -2371,6 +2318,7 @@ body {
   .navigation {
     height: 60px;
     font-size: 1em;
+    margin-top: 0;
   }
 
   .nav-item {
@@ -2409,4 +2357,242 @@ body {
   border-radius: 50%;
   padding: -2px;
   margin: -2px;
+}
+
+// *********************************** WIREFRAME **********************************
+
+.wf-nav {
+  display: none;
+}
+/* Container styles (to center the circle) */
+.circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Set the desired height of the container */
+}
+
+/* Circle styles */
+.circle {
+  width: 100px; /* Set the desired width and height of the circle */
+  height: 100px;
+  border-radius: 50%; /* Ensures the element appears as a circle */
+  background-color: lightgray; /* Use your desired light gray color */
+}
+
+.mobile-view {
+  .wf-hide {
+    display: none !important;
+  }
+  .wf-foot {
+    flex-direction: column;
+    background-color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150%;
+    margin-left: -20px;
+    .wf-hide {
+      display: none;
+    }
+    .wf-news {
+      margin-left: -150px;
+      text-align: center;
+      .news-btn {
+        color:#000000c4
+      }
+      .nav-item {
+        text-align: center;
+        margin-left: 80px;
+      }
+    }
+    .col-wf-foot {
+      display: flex;
+      width: 200px !important;
+      flex-direction: column;
+      justify-content: flex-start;
+      h2{
+        margin-bottom: 3px;
+      }
+    }
+  }
+  .hero-wireframe {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .vid {
+      text-align: center;
+      width: 100%;
+      height: 15vw;
+      display: grid;
+      border-radius: 5px;
+      background-color: #8f8f8f23;
+    }
+    .logo-placeholder {
+      .wf-nav {
+        display: none !important;
+      }
+    }
+  }
+}
+.wf-tog {
+  position: fixed;
+  z-index: 1000;
+}
+.log-wf{
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.desktop-view,
+.tablet-view {
+  padding-bottom: 0 !important;
+  .content-wireframe {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.log-wf{
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.wf-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.account-holder {
+  width: 500px;
+}
+  .navigation {
+    display: none;
+  }
+  .col-wf-foot {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+  }
+  .wf-news {
+    margin-top: -30px;
+  }
+  .wf-foot {
+    width: 100%;
+    margin: 0 -30px;
+    padding: 10px 30px;
+    background-color: #444;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: fit-content;
+}
+  .content-wireframe {
+    display: flex;
+    .content-item {
+      width: 20%;
+      margin: 10px;
+    }
+  
+  }
+  .hero-wireframe {
+    // width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .vid {
+      text-align: center;
+      width: 100%;
+      max-width: 600px;
+      height: 200px;
+      display: grid;
+      border-radius: 5px;
+      background-color: #8f8f8f23;
+    }
+    .logo-placeholder {
+      display: flex !important;
+      align-items: center;
+      width: 100%;
+      // justify-content: space-between;
+      padding: 0;
+      .wf-head {
+        padding: 5px 10px;
+      }
+      .wf-nav {
+        display: flex;
+        justify-content: end;
+        margin: 0 5px 10px 0;
+        align-items: center;
+        width: 90%;
+        p {
+          margin: 0 5px 10px 0;
+        }
+      }
+
+      .wf-btn {
+        padding: 5px 10px;
+        border-radius: 50px;
+        margin: 0px 0 0 10px;
+      }
+    }
+  }
+}
+
+.wf-txt {
+  background-color: #f1f1f162;
+  width: 100%;
+  color: #888;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vid {
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.wf-btn {
+  color: #bbbbbb;
+  background-color: #fff;
+  border: 1px solid #bbbbbb;
+  margin-bottom: 10px;
+}
+
+/* Common styles for both desktop and tablet views */
+
+.wireframe-container {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.main-content {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px;
+  padding: 20px;
+
+  /* For mobile view */
+  // width: 368px;
+}
+
+.desktop-view {
+  width: 90%;
+}
+
+.tablet-view {
+  width: 769px;
 }

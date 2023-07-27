@@ -60,6 +60,7 @@ const Tours = () => {
         const latLng = L.latLng(latitude, longitude)
         map.panTo(latLng)
         marker.setLatLng(map.getCenter())
+      console.log(data)
       } catch (error) {
         console.error('Error fetching coordinates:', error)
       }
@@ -71,9 +72,10 @@ const Tours = () => {
     return () => {
       clearInterval(intervalId)
       map.remove()
+      
     }
   }, [])
-
+  console.log(issData)
   const tourData = [
     {
       title: 'ISS Experience Tour',
