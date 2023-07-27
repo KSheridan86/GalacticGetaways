@@ -119,7 +119,7 @@ const Tours = () => {
       </div>
       <div className="tour-menu">
       <li className="navbar-dropdown tour-pack">
-          <a classname="drop-tour" href="#" className=" drop-arrow">
+          <a className="drop-tour" href="#" className=" drop-arrow">
             Tour Packages <HiChevronDown />
           </a>
           <ul className="dropdown-menu tour-list">
