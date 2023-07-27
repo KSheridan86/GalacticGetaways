@@ -175,25 +175,31 @@ A robots.txt file has also be included in the build to tell the search engine cr
 
 ## Features
 
+#### Navigation Bar
+The main navigation bar appears at the bottom of the page on Mobile devices and the top of the page (shown below) on Desktop devices, clearly displaying the main navigational links users would require.
+
+![Nav Bar](./src/docs/navbar.png)
+
 #### Home page
-A welcoming homepage was built to clearly convey the sites purpose. The call to action buttons for the user to go straight to the tours or contact section is at the bottom of the main page.
+A welcoming homepage was built to clearly convey the sites purpose. The Nav buttons for the user to go straight to the tours or contact section are located at the bottom of all pages in mobile layout.
 
 ![Home Page](./src/docs/home-mobile.png)
 
-#### Navigation Bar
-The main navigation bar appears at the bottom of the page, clearly displaying the main navigational links users would require.
+##### About Page:
 
-![Nav Bar]()
+![About Page](./src/docs/about.png)
 
-
-#### Other Pages/Features
-![About Page]()
+##### Tours Page:
 
 ![Tours Page]()
 
-![Contact Page]()
+##### Contact Page:
 
-![Login/Account Page]()
+![Contact Page](./src/docs/contact.png)
+
+##### Login Page:
+
+![Login/Account Page](./src/docs/login.png)
 
 
 [Back to the Top](#table-of-contents)

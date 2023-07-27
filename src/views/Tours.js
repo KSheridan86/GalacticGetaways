@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 import { HiChevronDown } from 'react-icons/hi'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import Globe from 'globe.gl'
+// import Globe from 'globe.gl'
 import logo from '../media/gg312.png'
 import spaceStationIcon from '../media/space-station.png'
-import Glober from '../components/Globe'
+// import Glober from '../components/Globe'
 
 const Tours = () => {
   const mapContainerRef = useRef(null)
@@ -144,7 +144,7 @@ const Tours = () => {
       </div>
       
       <div className="globe">
-        <Glober long={issData.longitude} lat={issData.lat} />
+        {/* <Glober long={issData.longitude} lat={issData.lat} /> */}
       </div>
       <div className="star-image outer-container ">
         {/* <Glober long={issData.longitude} lat={issData.lat} /> */}
@@ -211,7 +211,10 @@ const Tours = () => {
             <div className='packages' id={tour.id} key={index}>
               <h2>{tour.title}</h2>
               <p>{tour.description}</p>
-             <Link to="/contact"><button className="package-btn">Request {tour.name} Info</button></Link> 
+              <Link to="/contact">
+                <button className="package-btn">
+                  Request {tour.name} Info
+                </button></Link> 
             </div>
           ))}
           <p className='tour-cont'>
