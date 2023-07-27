@@ -1,14 +1,13 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { HiChevronDown } from 'react-icons/hi'
 import logo from '../media/gg312.png'
-import { getAuth } from 'firebase/auth';
- 
+import { getAuth } from 'firebase/auth'
 
 const DeskNav = () => {
   // const location = useLocation();
-  const auth = getAuth();
-  const isLoggedIn = auth.currentUser !== null;
+  const auth = getAuth()
+  const isLoggedIn = auth.currentUser !== null
 
   return (
     <nav className={`navbar`}>
@@ -18,10 +17,7 @@ const DeskNav = () => {
           <img src={logo} alt="Logo" className="logo-image" />
         </NavLink>
       </div>
-      <ul
-        className={`navbar-Navlinks navbar-menu`}
-      >
-
+      <ul className={`navbar-Navlinks navbar-menu`}>
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
@@ -33,41 +29,37 @@ const DeskNav = () => {
         </li>
 
         <li className="navbar-dropdown">
-          <a href="#" className=" drop-arrow">
-            Tours <HiChevronDown />
+          <a href="/tours" className=" drop-arrow">
+            {/* Tours <HiChevronDown /> */} Tours
           </a>
-          <ul className="dropdown-menu">
+          {/* <ul className="dropdown-menu">
             <li className="drop-item">
-              {' '}
-              <NavLink to="/tours#basic">Basic</NavLink>
+              <a href="/tours#basic">Basic</a>
             </li>
             <li className="drop-item">
-              {' '}
-              <NavLink to="/tours#earth-orbit">Earth Orbit</NavLink>
+              <a href="/tours#earth-orbit">Earth Orbit</a>
             </li>
             <li className="drop-item">
-              <NavLink to="/tours#moon-landing">Moon Landing</NavLink>
+              <a href="/tours#moon-landing">Moon Landing</a>
             </li>
             <li className="drop-item">
-              {' '}
-              <NavLink to="/tours#deluxe">Deluxe</NavLink>
+              <a href="/tours#deluxe">Deluxe</a>
             </li>
             <li className="drop-item">
-              {' '}
-              <NavLink to="/tours#all-in-one">All in One</NavLink>
+              <a href="/tours#all-in-one">All in One</a>
             </li>
-          </ul>
+          </ul> */}
         </li>
         <li>
-        {isLoggedIn ? (
-          <NavLink className="nov" to="/account">
-            <button className="nav-btn">Account</button>
-          </NavLink>
-        ) : (
-          <NavLink className="nov" to="/login">
-          <button className="nav-btn">Login</button>
-        </NavLink>
-        )}
+          {isLoggedIn ? (
+            <NavLink className="nov" to="/account">
+              <button className="nav-btn">Account</button>
+            </NavLink>
+          ) : (
+            <NavLink className="nov" to="/login">
+              <button className="nav-btn">Login</button>
+            </NavLink>
+          )}
         </li>
       </ul>
     </nav>

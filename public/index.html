@@ -27,6 +27,15 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBm894ESaPOe_4itvb3d87zhEzMUVQn9x8&callback=initMap&libraries=maps,marker&v=beta">
+    </script>
+
+    <script>
+      function initMap() {
+        console.log('Maps JavaScript API loaded.');
+      }
+    </script>
     <title>Galactic Getaways</title>
   </head>
   <body>
@@ -42,5 +51,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    
   </body>
 </html>

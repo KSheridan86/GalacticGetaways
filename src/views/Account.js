@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getAuth, updateProfile, onAuthStateChanged, signOut } from 'firebase/auth';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { db } from '../firebase'
-import { collection, getDocs } from 'firebase/firestore'
+import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
 import { FiLogOut, FiEdit3, FiCheck } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 import logo from '../media/gg312.png';
@@ -76,32 +76,31 @@ const AccountPage = () => {
       }
     }
   };
-
   useEffect(() => {
     async function getBookings() {
       try {
-        const nameCollectionRef = collection(db, 'bookings')
-        const querySnapshot = await getDocs(nameCollectionRef)
-        const data = querySnapshot.docs.map(doc => ({
-          data: doc.data(),
-          id: doc.id,
-        }))
-        // function time() {
-          // Convert seconds to milliseconds
-          // const milliseconds = bookings.data.time.seconds * 1000;
-          // Create a new Date object using the milliseconds
-          // const date = new Date(milliseconds);
-        //   return date;
-        // }
-        // time()
-        setBookings(data)
+        const auth = getAuth();
+        const user = auth.currentUser;
+  
+        console.log("Current User:", user); 
+  
+        if (user) {
+          const bookingsRef = collection(db, 'bookings');
+          const querySnapshot = await getDocs(query(bookingsRef, where('user-id', '==', user.uid)));
+          const data = querySnapshot.docs.map(doc => ({
+            data: doc.data(),
+            id: doc.id,
+          }));
+          setBookings(data);
+        }
       } catch (error) {
-        console.log('Error getting Bookings:', error)
+        console.log('Error getting Bookings:', error);
       }
     }
-    getBookings()
-   
-  }, [])
+  
+    getBookings();
+  }, []);
+  
 
   const handleSignOut = () => {
     const auth = getAuth();
@@ -195,7 +194,8 @@ const AccountPage = () => {
                 <p><strong>Status: </strong>  {b.data.status}</p>
                 </li>
                 <li>
-                <p><strong>Date: </strong> {new Date(b.data.date.seconds).toString()}</p>
+                <p><strong>Date: </strong> {b.data.date?.seconds ? new Date(b.data.date.seconds * 1000).toString() : 'N/A'}</p>
+
                 
                 
                 </li>

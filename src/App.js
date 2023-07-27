@@ -43,7 +43,7 @@ const App = () => {
 
   return (
       <div className='app'>
-        <ScrollToTop>
+        {/* <ScrollToTop> */}
           <ScrollUp />
         <DeskNav isLoggedIn={isLoggedIn} />
         <Nav isLoggedIn={isLoggedIn} />
@@ -59,7 +59,7 @@ const App = () => {
           <Route path="/privacy" element={<Privacy />} />
         </Routes>
         <Footer />
-        </ScrollToTop>
+        {/* </ScrollToTop> */}
       </div>
   );
 };
