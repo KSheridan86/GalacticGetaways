@@ -1340,6 +1340,13 @@ body {
   padding-bottom: 20px;
   background-color: #f9f9f9;
 }
+.ss {
+  z-index: 1000;
+  position: absolute;
+  top: 65%;
+  width: 40px;
+ left: 50%
+}
 
 .hero-image-placeholder,
 .hero-text-placeholder {
@@ -1793,6 +1800,13 @@ body {
 /* Tablet & Desktop version */
 
 @media only screen and (min-width: 728px) {
+  .ss {
+    z-index: 1000;
+    position: absolute;
+    top: 55%;
+    width: 40px;
+    left: 50%;
+}
   .user-info {
     width: 100vw;
     .nasa {

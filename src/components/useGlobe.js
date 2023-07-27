@@ -1,16 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import ThreeGlobe from 'three-globe';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 
-const InteractiveGlobe = () => {
+const useGlobe = ({ lat, long }) => {
   const globeRef = useRef(null);
   const controlsRef = useRef(null);
   const globeInstanceRef = useRef(null);
   const arcsDataRef = useRef([]);
-
-  // Create a separate ref for the marker
-  const markerRef = useRef(null);
 
   useEffect(() => {
     const N = 20;
@@ -57,40 +54,23 @@ const InteractiveGlobe = () => {
     const tbControls = new TrackballControls(camera, renderer.domElement);
     tbControls.minDistance = 101;
     tbControls.rotateSpeed = 0.5;
-    tbControls.zoomSpeed = 0; // Disable zoom on scrolling
+    tbControls.zoomSpeed = 0.8;
     controlsRef.current = tbControls;
-
-    // Create the marker
-    const markerGeometry = new THREE.PlaneGeometry(20, 20);
-    const markerMaterial = new THREE.MeshBasicMaterial({ color: 'red' });
-    const marker = new THREE.Mesh(markerGeometry, markerMaterial);
-    scene.add(marker);
-
-    markerRef.current = marker;
 
     const animate = () => {
       const currentTime = Date.now();
 
       arcsDataRef.current = arcsDataRef.current.map(arc => ({
         ...arc,
-        startLng: arc.startLng + Math.sin(currentTime * 0.00005) * 0.0001,
-        endLng: arc.endLng + Math.cos(currentTime * 0.00005) * 0.0001,
+        startLng: arc.startLng + Math.sin(currentTime * 0.00005) * 0.0002,
+        endLng: arc.endLng + Math.cos(currentTime * 0.00005) * 0.0002,
       }));
 
       globeInstanceRef.current.arcsData(arcsDataRef.current);
 
       // Update rotation along both X and Y axes
-      globeInstanceRef.current.rotateX(0.0002);
-      globeInstanceRef.current.rotateY(0.0005);
-
-      // Update the marker position every few seconds
-      const phi = (90 - 25) * (Math.PI / 180); // Example latitude
-      const theta = (180 - 80) * (Math.PI / 180); // Example longitude
-      const markerX = 500 * Math.sin(phi) * Math.cos(theta);
-      const markerY = 500 * Math.cos(phi);
-      const markerZ = 500 * Math.sin(phi) * Math.sin(theta);
-
-      marker.position.set(markerX, markerY, markerZ);
+      globeInstanceRef.current.rotateX(0.0005);
+      globeInstanceRef.current.rotateY(0.001);
 
       controlsRef.current.update();
       renderer.render(scene, camera);
@@ -98,26 +78,29 @@ const InteractiveGlobe = () => {
     };
     animate();
 
-    const handleScroll = event => {
-      event.preventDefault();
-      event.stopPropagation();
-    };
-
-    globeRef.current.addEventListener('wheel', handleScroll, { passive: false });
-
     return () => {
       renderer.dispose();
       controlsRef.current.dispose();
-      globeRef.current.removeEventListener('wheel', handleScroll);
     };
   }, []);
 
-  return (
-    <div
-      ref={globeRef}
-      style={{ width: '100%', height: '80vh', marginTop: '-100px', zIndex: '1' }}
-    />
-  );
+  // Update globe rotation based on lat and long props
+  useEffect(() => {
+    if (lat && long) {
+      const phi = (90 - lat) * (Math.PI / 180);
+      const theta = (180 - long) * (Math.PI / 180);
+      const target = new THREE.Vector3();
+
+      target.x = 500 * Math.sin(phi) * Math.cos(theta);
+      target.y = 500 * Math.cos(phi);
+      target.z = 500 * Math.sin(phi) * Math.sin(theta);
+
+      const camera = globeInstanceRef.current.camera();
+      camera.lookAt(target);
+    }
+  }, [lat, long]);
+
+  return globeRef;
 };
 
-export default InteractiveGlobe;
+export default useGlobe;
