@@ -322,6 +322,11 @@ const AccountPage = () => {
                     : "N/A"}
                 </p>
               </li>
+              <li>
+                <p>
+                  <strong>Message: </strong> {b.data.message}
+                </p>
+              </li>
               <div className="booking-buttons">
                 <button onClick={() => handleEditBooking(b.id)}>
                   <FiEdit3 />
