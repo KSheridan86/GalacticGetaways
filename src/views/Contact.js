@@ -1,38 +1,31 @@
-import React, { useState, useEffect } from 'react'
-import emailjs from 'emailjs-com'
-import logo from '../media/gg312.png'
-import bg from '../media/shut.png'
-import '../index.css'
-import { Map, GoogleApiWrapper, Marker } from '@react-google-maps/api'
-import MapContainer from '../components/MapContainer'
+import React, { useState, useEffect } from 'react';
+import emailjs from 'emailjs-com';
+import logo from '../media/gg312.png';
+import bg from '../media/shut.png';
+import '../index.css';
+import { getAuth } from 'firebase/auth';
+import {
+  collection,
+  addDoc,
+  serverTimestamp,
+} from 'firebase/firestore';
+import { db } from '../firebase';
 
 const Contact = () => {
-  const [tourPlace, setTourPlace] = useState('')
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [tourPlace, setTourPlace] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleTourPlaceChange = e => {
-    setTourPlace(e.target.value)
-  }
-  // function initMap() {
-  //   new google.maps.Map(document.getElementById("map"), {
-  //     mapId: "8e0a97af9386fef",
-  //     center: { lat: 48.85, lng: 2.35 },
-  //     zoom: 12,
-  //   });
-  // }
-  
-  // window.initMap = initMap;
-  const mapOptions = {
-    mapId: 'c115b3afa6cb63f6', 
+    setTourPlace(e.target.value);
   };
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    const firstName = e.target.elements.fname.value
-    const lastName = e.target.elements.lname.value
-    const email = e.target.elements.email.value
-    const tourPlace = e.target.elements.tourPlace.value
-    const message = e.target.elements.message.value
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const firstName = e.target.elements.fname.value;
+    const lastName = e.target.elements.lname.value;
+    const email = e.target.elements.email.value;
+    const tourPlace = e.target.elements.tourPlace.value;
+    const message = e.target.elements.message.value;
 
     const templateParams = {
       from_name: `${firstName} ${lastName}`,
@@ -41,6 +34,27 @@ const Contact = () => {
       email: email,
       message: message,
       tour_place: tourPlace,
+    };
+
+    try {
+      const auth = getAuth();
+      const user = auth.currentUser;
+      if (!user) {
+
+        return;
+      }
+
+      const userCollection = collection(db, 'bookings');
+      await addDoc(userCollection, {
+        userId: user.uid, 
+        date: serverTimestamp(),
+        package: tourPlace,
+        status: 'pending',
+      });
+      console.log('Booking submitted successfully!');
+   
+    } catch (error) {
+      console.error('Error submitting booking form:', error);
     }
 
     emailjs
@@ -51,25 +65,31 @@ const Contact = () => {
         '8dbphUqwHbrkIwDFN'
       )
       .then(response => {
-        console.log('Email sent successfully!', response.status, response.text)
-        setIsSubmitted(true)
-        e.target.reset()
+        console.log(
+          'Email sent successfully!',
+          response.status,
+          response.text
+        );
+        setIsSubmitted(true);
+        e.target.reset();
       })
       .catch(error => {
-        console.error('Email sending failed:', error)
-      })
-  }
+        console.error('Email sending failed:', error);
+      });
+  };
+
   useEffect(() => {
     if (isSubmitted) {
       const timer = setTimeout(() => {
-        setIsSubmitted(false)
-      }, 2000)
+        setIsSubmitted(false);
+      }, 2000);
 
       return () => {
-        clearTimeout(timer)
-      }
+        clearTimeout(timer);
+      };
     }
-  }, [isSubmitted])
+  }, [isSubmitted]);
+
   return (
     <div className="contact-container pg-wrap">
       <img src={bg} alt="Background Image" className="background-image" />
@@ -195,12 +215,19 @@ const Contact = () => {
             </a>
           </p>
           <div>
-          <MapContainer />
+            {/* <MapContainer /> */}
+            <div className="mapper">
+              <gmp-map
+                center="37.4220656,-122.0840897"
+                zoom="10"
+                map-id="c115b3afa6cb63f6"
+              ></gmp-map>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
