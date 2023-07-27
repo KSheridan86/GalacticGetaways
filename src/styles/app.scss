@@ -2364,21 +2364,37 @@ body {
 .wf-nav {
   display: none;
 }
-/* Container styles (to center the circle) */
+
 .circle-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px; /* Set the desired height of the container */
+  height: 100px; 
 }
 
-/* Circle styles */
+
 .circle {
-  width: 100px; /* Set the desired width and height of the circle */
+  width: 100px; 
   height: 100px;
-  border-radius: 50%; /* Ensures the element appears as a circle */
-  background-color: lightgray; /* Use your desired light gray color */
+  border-radius: 50%; 
+  background-color: lightgray; 
 }
+
+.circle-container-big {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px; 
+}
+
+
+.circle-big {
+  width: 300px; 
+  height: 300px;
+  border-radius: 50%; 
+  background-color: lightgray; 
+}
+
 
 .mobile-view {
   .wf-hide {

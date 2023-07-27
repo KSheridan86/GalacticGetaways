@@ -35,10 +35,10 @@ const WireframeDisplay = () => {
         </div>
         <AboutWF viewType={viewType} />
 
-        {/* <div className="wf-title">
+        <div className="wf-title">
           Tours {viewType === 'desktop' ? '(Desktop View)' : viewType === 'tablet' ? '(Tablet View)' : '(Mobile View)'}
         </div>
-        <ToursWF viewType={viewType} /> */}
+        <ToursWF viewType={viewType} />
   
         <div className="wf-title">
           Contact {viewType === 'desktop' ? '(Desktop View)' : viewType === 'tablet' ? '(Tablet View)' : '(Mobile View)'}
