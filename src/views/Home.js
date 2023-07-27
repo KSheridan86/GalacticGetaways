@@ -20,18 +20,11 @@ import image1 from '../media/shut.png'
 import image11 from '../media/shut3.png'
 import vid from '../media/ggvid1.mp4'
 import dataBg from '../media/dlaunch.jpg'
-import background from '../media/stargb.jpg'
+import background from '../media/stars-mobile.webp'
 
-const data = [
-  {1: '/contact'},
-  {2: '/tours'},
-  {3: '/contact'},
-  {4: '/tours'},
-  {5: '/contact'},
-  {6: '/tours'},
-  {7: '/contact'},
-  {8: '/tours'},
-]
+const data = {
+  link: '/contact'
+}
 // const images = [
 //   // { id: 1, src: image1, alt: 'Image 1', location: 'section1' },
 //   { id: 1, src: image1, alt: 'Image 1', location: 'section2' },
@@ -84,14 +77,12 @@ const Home = () => {
         </video>
       </div>
       <div className="home-content">
-      
-        <img src={background} className="bg-image"/>
-      
-        <div className="bgol"></div>
-      {info.map((name, index) => (
-        <DataCard key={index} name={name} link={data[index].link} index={index} />
-      ))}
-        </div>
+        <img src={background} alt="star pic" className="bg-image"/>
+        {/* <div className="bgol"></div> */}
+        {info.map((name, index) => (
+          <DataCard key={index} name={name} link={data.link} index={index} />
+        ))}
+      </div>
     </div>
   )
 }

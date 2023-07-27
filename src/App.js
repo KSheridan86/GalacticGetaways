@@ -7,7 +7,6 @@ import Login from './views/Login';
 import Tours from './views/Tours';
 import About from './views/About';
 import Account from './views/Account';
-// import Wireframe from './components/Wireframe';
 import { auth } from './firebase';
 import WireframeDisplay from './components/WireframeDisplay';
 import ScrollToTop from './components/ScrollToTop';
@@ -29,13 +28,12 @@ const App = () => {
         top: 0,
         behavior: 'smooth',
       });
-      console.log("scrolling")
     }
   }, [location.pathname, isLoading]);
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       setIsLoggedIn(user !== null);
-      setIsLoading(false); // Data loading is complete
+      setIsLoading(false);
     });
 
     return () => unsubscribe();
@@ -45,20 +43,20 @@ const App = () => {
       <div className='app'>
         {/* <ScrollToTop> */}
           <ScrollUp />
-        <DeskNav isLoggedIn={isLoggedIn} />
-        <Nav isLoggedIn={isLoggedIn} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/wfd" element={<WireframeDisplay />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/tours" element={<Tours />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/privacy" element={<Privacy />} />
-        </Routes>
-        <Footer />
+          <DeskNav isLoggedIn={isLoggedIn} />
+          <Nav isLoggedIn={isLoggedIn} />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/wfd" element={<WireframeDisplay />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/tours" element={<Tours />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/account" element={<Account />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/privacy" element={<Privacy />} />
+            </Routes>
+          <Footer />
         {/* </ScrollToTop> */}
       </div>
   );

@@ -220,6 +220,10 @@ const Tours = () => {
             unforgettable for all space enthusiasts.
           </p>{' '}
         </div>
+        <Link to="/contact">
+          <button className="btn-spacing"> Book Your Tour</button>
+        </Link>
+        
       </div>
     </div>
   )
