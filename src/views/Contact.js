@@ -22,9 +22,9 @@ const Contact = () => {
   // }
   
   // window.initMap = initMap;
-  const mapOptions = {
-    mapId: 'c115b3afa6cb63f6', 
-  };
+  // const mapOptions = {
+  //   mapId: 'c115b3afa6cb63f6', 
+  // };
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -72,9 +72,9 @@ const Contact = () => {
   }, [isSubmitted])
   return (
     <div className="contact-container pg-wrap">
-      <img src={bg} alt="Background Image" className="background-image" />
+      <img src={bg} alt="Pic of stars" className="background-image" />
       <div className="logo-container">
-        <img src={logo} alt="logo Image" className="logo" />
+        <img src={logo} alt="company logo" className="logo" />
       </div>
       {isSubmitted && (
         <div className="popup">
@@ -167,6 +167,7 @@ const Contact = () => {
               className="con-link"
               href="mailto:info@galacticgetaways.com"
               target="_blank"
+              rel="noreferrer"
             >
               {' '}
               info@galacticgetaways.com
@@ -178,6 +179,7 @@ const Contact = () => {
               className="con-link"
               href="tel:+1 (123) 456-7890"
               target="_blank"
+              rel="noreferrer"
             >
               {' '}
               +1 (123) 456-7890
@@ -195,7 +197,7 @@ const Contact = () => {
             </a>
           </p>
           <div>
-          <MapContainer />
+          {/* <MapContainer /> */}
           </div>
         </div>
       </div>

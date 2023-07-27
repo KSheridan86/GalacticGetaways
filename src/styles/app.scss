@@ -402,8 +402,9 @@ button {
 
 .full-image-container {
   position: relative;
-  height: calc(100vh - 256px);
+  height: calc(100vh - 156px);
   overflow: hidden;
+  margin-top: -.25rem;
 }
 
 .full-image {
@@ -423,12 +424,13 @@ button {
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
 .home-content {
   background-color: #000;
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0;
+  margin: -.25rem 0 0 0;
   gap: 20px;
   padding: 10%;
   flex-direction: column;
@@ -439,7 +441,7 @@ button {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 350px;
+    width: 340px;
     height: fit-content;
     padding-bottom: 20px;
     // border: 1px solid #ccc;
@@ -735,7 +737,7 @@ select:focus {
 }
 
 .star-image {
-  background-image: url('../media/stars-mobile.webp');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fstars-mobile.webp?alt=media&token=a037265f-4214-48cb-9fad-faf13b3731bd');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -783,12 +785,6 @@ select:focus {
   width: 100%;
   background-image: linear-gradient(25deg, $primary-color, #0063ff);
   color: #fff;
-}
-
-@media (min-width: 768px) {
-  #map-container {
-    height: 50vh;
-  }
 }
 
 /* CONTACT */
@@ -1583,6 +1579,9 @@ body {
 /* Tablet & Desktop version */
 
 @media only screen and (min-width: 728px) {
+  .outer-container {
+    margin-top: 6rem;
+  }
   .back-to-top-button {
     font-size: 2rem;
     border: none;
@@ -1634,6 +1633,7 @@ body {
     display: none;
   }
   .navbar {
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -1643,6 +1643,7 @@ body {
     text-transform: uppercase;
     width: 100%;
     height: 100px;
+    z-index: 100;
 
     ul {
       list-style: none;
@@ -1839,7 +1840,7 @@ body {
   }
 
   .home-content {
-    background-image: url('../media/star-image.webp');
+    // background-image: url('../media/star-image.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -1847,7 +1848,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: row;
     overflow: hidden;
     height: fit-content;
@@ -1868,20 +1869,19 @@ body {
     max-height: fit-content;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
   }
-  .bgol {
-    position: absolute;
-    width: 100%;
-    height: -webkit-fill-available;
-    z-index: 3;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+  // .bgol {
+  //   position: absolute;
+  //   width: 100%;
+  //   height: -webkit-fill-available;
+  //   z-index: 3;
+  //   background-color: rgba(0, 0, 0, 0.5);
+  // }
   .about-content{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     padding: 10%;
     overflow: hidden;
-    margin-top: -6rem;
   }
 
 
@@ -1890,6 +1890,8 @@ body {
   }
   .home-container {
     .data-card {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1897,16 +1899,17 @@ body {
       width: 350px;
       height: fit-content;
       padding-bottom: 20px;
-      // border: 1px solid #ccc;
+  
       border-radius: 8px;
-      background-color: rgba(0, 0, 0, 0.8);
-      // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, 0.3);
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
       transition: all 0.2s ease-in-out;
       z-index: 10;
       .data-image {
-        width: 100%;
+        width: 90%;
         height: 250px;
         height: 100%;
+        margin-top: 1rem;
         object-fit: cover;
         border-radius: 8px;
         border-bottom-left-radius: 0;
@@ -2117,7 +2120,7 @@ body {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 10px;
-  margin: 2rem 1rem;
+  margin: 1rem 1rem;
 
   padding: 0.5rem;
 }

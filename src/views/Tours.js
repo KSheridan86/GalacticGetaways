@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router-dom';
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 // import '../App.css'
@@ -129,7 +130,10 @@ const Tours = () => {
       
           
         </div>
-        <button className="btn-spacing"> Book Your Tour</button>
+        <Link to="/contact">
+          <button className="btn-spacing"> Book Your Tour</button>
+        </Link>
+        
       </div>
     </div>
   )

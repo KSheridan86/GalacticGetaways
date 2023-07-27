@@ -5,24 +5,20 @@ const ScrollUp = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        console.log('Adding scroll event listener...');
         window.addEventListener('scroll', handleScroll);
 
         return () => {
-            console.log('Removing scroll event listener...');
             window.removeEventListener('scroll', handleScroll);
         };
 
     }, []);
 
     const handleScroll = () => {
-        console.log('Scrolling...');
         const scrollTop = document.documentElement.scrollTop;
         setIsVisible(scrollTop > 300);
     };
 
     const scrollUp = () => {
-        console.log("Scrolling to the top...");
         window.scrollTo({
         top: 0,
         behavior: 'smooth',
