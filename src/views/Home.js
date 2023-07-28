@@ -53,8 +53,8 @@ const Home = () => {
       </div>
       <div className="full-image-container">
         <div className="full-image-overlay">
-          <img src={image1} className="full-image" />
-          {/* <img src='https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fshut.webp?alt=media&token=240f3c48-65e2-456e-ade5-3b14b47efc22' alt="stars" className="full-image" /> */}
+          {/* <img src={image1} className="full-image" /> */}
+          <img src='https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fshut.webp?alt=media&token=240f3c48-65e2-456e-ade5-3b14b47efc22' alt="stars" className="full-image" />
         </div>
       </div>
       <div className="intro-video">
