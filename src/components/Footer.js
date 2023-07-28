@@ -67,18 +67,18 @@ const Footer = () => {
           <ul className="footer-menu">
             <li className="footer-item">
               {' '}
-              <Link to="/tours#basic">Basic</Link>
+              <a href="/tours#basic">Basic</a>
             </li>
             <li className="footer-item">
               {' '}
-              <Link to="/tours#earth-orbit">Earth Orbit</Link>
+              <a href="/tours#earth-orbit">Earth Orbit</a>
             </li>
             <li className="footer-item">
-              <Link to="/tours#moonlanding">Moon Landing</Link>
+            <a href="/tours#moonlanding">Moon Landing</a>
             </li>
             <li className="footer-item">
               {' '}
-              <Link to="/tours#deluxe">Deluxe</Link>
+              <a href="/tours#deluxe">Deluxe</a>
             </li>
           </ul>
         </div>
@@ -103,8 +103,7 @@ const Footer = () => {
             </li>
             <li className="footer-item">
               {' '}
-              <NavLink to="/newgrange">Deluxe</NavLink>
-            </li>
+              <a href="/tours#all-in-one">Total Package</a></li>
           </ul>
         </div>
         <div className="column">
@@ -125,7 +124,7 @@ const Footer = () => {
               Sign up for our newsletter to receive updates:
             </p>
             <form onSubmit={handleSubmit}>
-              <input type="email" placeholder="Enter your email" name="email" />
+              <input type="email" placeholder="Enter your email" name="email" required />
               <button className="foot-btn" type="submit">
                 Subscribe
               </button>

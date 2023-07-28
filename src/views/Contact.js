@@ -5,7 +5,7 @@ import bg from '../media/shut.png'
 import '../index.css'
 import { Map, GoogleApiWrapper, Marker } from '@react-google-maps/api'
 import MapContainer from '../components/MapContainer'
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import {
   collection,
   addDoc,
@@ -15,29 +15,48 @@ import {
   getDocs,
 } from 'firebase/firestore';
 import { db } from '../firebase';
+import Popup from '../components/Popup'
+
 
 const Contact = () => {
   const [tourPlace, setTourPlace] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [popmsg, setPopmsg] = useState('')
+  const [showPopup, setShowPopup] = useState(false)
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
+
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+  
+        setIsSignedIn(true);
+      } else {
+
+        setIsSignedIn(false);
+      }
+    });
+  }, []);
+    
   const handleTourPlaceChange = e => {
     setTourPlace(e.target.value)
   }
-  // function initMap() {
-  //   new google.maps.Map(document.getElementById("map"), {
-  //     mapId: "8e0a97af9386fef",
-  //     center: { lat: 48.85, lng: 2.35 },
-  //     zoom: 12,
-  //   });
-  // }
-  
-  // window.initMap = initMap;
   const mapOptions = {
     mapId: 'c115b3afa6cb63f6', 
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!isSignedIn) {
+      setPopmsg('You need to sign in first');
+      setShowPopup(true); 
+      setTimeout(() => {
+        setShowPopup(false); 
+        setPopmsg(''); 
+      }, 3000);
+      return;
+    }
     const firstName = e.target.elements.fname.value
     const lastName = e.target.elements.lname.value
     const email = e.target.elements.email.value
@@ -76,21 +95,25 @@ const Contact = () => {
       .then(response => {
         console.log('Email sent successfully!', response.status, response.text)
         setIsSubmitted(true)
+        
         e.target.reset()
       })
       .catch(error => {
         console.error('Email sending failed:', error)
       })
+
+      setIsSubmitted(false)
+      setPopmsg('Sent Successfully'); 
+        setShowPopup(true); 
+        setTimeout(() => {
+          setShowPopup(false); 
+          setPopmsg(''); 
+        }, 3000);
+        setTourPlace('');
   }
   useEffect(() => {
     if (isSubmitted) {
-      const timer = setTimeout(() => {
         setIsSubmitted(false)
-      }, 2000)
-
-      return () => {
-        clearTimeout(timer)
-      }
     }
   }, [isSubmitted])
   return (
@@ -182,6 +205,7 @@ const Contact = () => {
             <button type="submit">Submit</button>
           </div>
         </form>
+        {showPopup && <Popup message={popmsg} />} 
         <div className="contact-details">
           <h2 className="intro-head">Contact Details</h2>
           <p>

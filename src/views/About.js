@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import logo from '../media/gg312.png';
-// import '../App.css';
+
 
 const About = () => {
   const [info, setInfo] = useState([]);

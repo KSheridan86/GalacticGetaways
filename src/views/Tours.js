@@ -4,7 +4,7 @@ import { HiChevronDown } from 'react-icons/hi'
 // import ThreeGlobe from 'three-globe';
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-
+import img1 from '../media/space-station.png'
 import logo from '../media/gg312.png'
 import spaceStationIcon from '../media/space-station.png'
 
@@ -20,6 +20,35 @@ const Tours = () => {
   const [latitude, setLatitude] = useState(0)
   const [longitude, setLongitude] = useState(0)
 
+
+  useEffect(() => {
+    const fetchCoordinates = async () => {
+      try {
+        const response = await fetch(
+          'https://api.wheretheiss.at/v1/satellites/25544'
+        )
+        const data = await response.json()
+        setIssData(data)
+        setAltitude(data.altitude)
+        setSpeed(data.velocity)
+        setLatitude(data.latitude)
+        setLongitude(data.longitude)
+        const { latitude, longitude } = data
+        const latLng = L.latLng(latitude, longitude)
+
+      console.log(data)
+      } catch (error) {
+        console.error('Error fetching coordinates:', error)
+      }
+    }
+    fetchCoordinates()
+    const intervalId = setInterval(fetchCoordinates, 1000)
+
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [])
+  
   useEffect(() => {
     if (!mapContainerRef.current) return
     const map = L.map(mapContainerRef.current, {
@@ -48,36 +77,7 @@ const Tours = () => {
     })
 
     const marker = L.marker(map.getCenter(), { icon: markerIcon }).addTo(map)
-
-    const fetchCoordinates = async () => {
-      try {
-        const response = await fetch(
-          'https://api.wheretheiss.at/v1/satellites/25544'
-        )
-        const data = await response.json()
-        setIssData(data)
-        setAltitude(data.altitude)
-        setSpeed(data.velocity)
-        setLatitude(data.latitude)
-        setLongitude(data.longitude)
-        const { latitude, longitude } = data
-        const latLng = L.latLng(latitude, longitude)
-        map.panTo(latLng)
-        marker.setLatLng(map.getCenter())
-      console.log(data)
-      } catch (error) {
-        console.error('Error fetching coordinates:', error)
-      }
-    }
-
-    fetchCoordinates()
-    const intervalId = setInterval(fetchCoordinates, 1000)
-
-    return () => {
-      clearInterval(intervalId)
-      map.remove()
-      
-    }
+    
   }, [])
 
 
@@ -150,7 +150,13 @@ const Tours = () => {
         </li>
         
       </div>
-     <InteractiveGlobe />
+      <div className="globe-wrap">
+<div className="scroller left"></div>
+      <InteractiveGlobe lat={issData.latitude} long={issData.longitude} />
+     <img src={img1} className='ss' />
+     <div className="scroller right"></div>
+      </div>
+     
       <div className="star-image outer-container ">
         <div className="glass-box" id="box">
           <div className="tours-info-box">

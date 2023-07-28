@@ -21,6 +21,7 @@ import {
 import { FiLogOut, FiEdit3, FiCheck, FiTrash, FiX  } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import logo from '../media/gg312.png'
+import Popup from '../components/Popup'
 
 const AccountPage = () => {
   const [user, setUser] = useState(null)
@@ -34,13 +35,16 @@ const AccountPage = () => {
   const [avatarFile, setAvatarFile] = useState(null)
   const [editingBookingId, setEditingBookingId] = useState(null);
   const [bookings, setBookings] = useState([])
+  const [loadingBookings, setLoadingBookings] = useState(true);
   const navigate = useNavigate()
+  const [popmsg, setPopmsg] = useState('')
+  const [showPopup, setShowPopup] = useState(false)
 
   async function getBookings() {
     try {
       const auth = getAuth();
       const user = auth.currentUser;
-
+      
       console.log('Current User:', user);
 
       if (user) {
@@ -53,56 +57,43 @@ const AccountPage = () => {
           id: doc.id,
         }));
         setBookings(data);
+
+      setLoadingBookings(false);
       }
     } catch (error) {
+      setLoadingBookings(false);
       console.log('Error getting Bookings:', error);
     }
   }
 
   useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-
+  
       if (currentUser) {
         setName(currentUser.displayName || '');
         setEmail(currentUser.email || '');
         setAvatar(currentUser.photoURL || '');
+  
+        const bookingsRef = collection(db, 'bookings');
+        const querySnapshot = await getDocs(
+          query(bookingsRef, where('userId', '==', currentUser.uid))
+        );
+        const data = querySnapshot.docs.map((doc) => ({
+          data: doc.data(),
+          id: doc.id,
+        }));
+        setBookings(data);
+        setLoadingBookings(false);
       }
     });
-    getBookings();
-
+  
     return () => {
       unsubscribe();
     };
   }, []);
-
-  // useEffect(() => {
-  //   async function getBookings() {
-  //     try {
-  //       const auth = getAuth()
-  //       const user = auth.currentUser
-
-  //       console.log('Current User:', user)
-
-  //       if (user) {
-  //         const bookingsRef = collection(db, 'bookings')
-  //         const querySnapshot = await getDocs(
-  //           query(bookingsRef, where('userId', '==', user.uid))
-  //         )
-  //         const data = querySnapshot.docs.map(doc => ({
-  //           data: doc.data(),
-  //           id: doc.id,
-  //         }))
-  //         setBookings(data)
-  //       }
-  //     } catch (error) {
-  //       console.log('Error getting Bookings:', error)
-  //     }
-  //   }
-
-  //   getBookings()
-  // }, [])
+  
 
   const handleNameChange = e => {
     setName(e.target.value)
@@ -152,12 +143,24 @@ const AccountPage = () => {
         console.error('Error updating profile:', error)
       }
     }
+    setPopmsg('Updated Successfully'); // Set the popup message before showing the popup
+      setShowPopup(true); // Show the popup
+      setTimeout(() => {
+        setShowPopup(false); // Hide the popup after 3 seconds
+        setPopmsg(''); // Clear the popup message
+      }, 3000);
   }
   const handleEditBooking = (bookingId) => {
+    const currentBooking = bookings.find((booking) => booking.id === bookingId);
+    if (currentBooking) {
+      setEditPackage(currentBooking.data.package);
+      setEditMessage(currentBooking.data.message);
+    }
     setEditingBookingId(bookingId);
   };
-
   const handleCancelEdit = () => {
+    setEditPackage(''); 
+    setEditMessage('');
     setEditingBookingId(null);
   };
 
@@ -168,7 +171,13 @@ const AccountPage = () => {
         package: editPackage,
         message: editMessage,
       });
-      getBookings(); // Fetch the updated bookings
+      getBookings();
+      setPopmsg('Ticket Updated'); // Set the popup message before showing the popup
+      setShowPopup(true); // Show the popup
+      setTimeout(() => {
+        setShowPopup(false); // Hide the popup after 3 seconds
+        setPopmsg(''); // Clear the popup message
+      }, 3000);
       setEditingBookingId(null); // Exit edit mode
     } catch (error) {
       console.error("Error updating booking:", error);
@@ -179,7 +188,13 @@ const AccountPage = () => {
     try {
       const bookingsRef = collection(db, "bookings");
       await deleteDoc(doc(bookingsRef, bookingId));
-      getBookings(); // Fetch the updated bookings
+      getBookings(); 
+      setPopmsg('Ticket Deleted'); 
+      setShowPopup(true); 
+      setTimeout(() => {
+        setShowPopup(false); 
+        setPopmsg(''); 
+      }, 3000);
     } catch (error) {
       console.error("Error deleting booking:", error);
     }
@@ -190,7 +205,7 @@ const AccountPage = () => {
     signOut(auth)
       .then(() => {
         console.log('User signed out successfully!')
-        navigate('/')
+          navigate('/'); // Navigate after showing the popup for a while
       })
       .catch(error => {
         console.error('Error signing out:', error)
@@ -198,7 +213,7 @@ const AccountPage = () => {
   }
 
   if (!user) {
-    return <div>Loading...</div>
+    return <div className='loader-acc'><h1>Loading...</h1></div>
   }
 
   const formatDate = date => {
@@ -214,6 +229,7 @@ const AccountPage = () => {
 
   return (
     <div className="account-page">
+      
       <div className="logo-container">
         <img src={logo} alt="logo Image" className="logo" />
       </div>
@@ -222,7 +238,7 @@ const AccountPage = () => {
         <div className="user-info">
           <div className="edit-button">
             {!isEditMode ? (
-              <button onClick={() => setIsEditMode(true)}>
+              <button className='profile-btn' onClick={() => setIsEditMode(true)}>
                 <FiEdit3 />
               </button>
             ) : (
@@ -276,7 +292,7 @@ const AccountPage = () => {
               />
             </div>
           )}
-          <h3 className="nasa">Bookings</h3>
+          <h3 className="nasa req-in">Requested Information</h3>
           {bookings.map((b, i) => (
         <div className="booking" key={i}>
           {editingBookingId === b.id ? (
@@ -306,25 +322,25 @@ const AccountPage = () => {
             <ul>
               <li>
                 <p>
-                  <strong>Package: </strong> {b.data.package}
+                  <span>Package: </span> {b.data.package}
                 </p>
               </li>
               <li>
                 <p>
-                  <strong>Status: </strong> {b.data.status}
+                  <span>Status: </span> {b.data.status}
                 </p>
               </li>
               <li>
                 <p>
-                  <strong>Date: </strong>{" "}
+                  <span>Date: </span>{" "}
                   {b.data.date?.seconds
                     ? formatDate(new Date(b.data.date.seconds * 1000))
                     : "N/A"}
                 </p>
               </li>
               <li>
-                <p>
-                  <strong>Message: </strong> {b.data.message}
+                <p className='acc-msg'>
+                  <span>Message: </span> {b.data.message}
                 </p>
               </li>
               <div className="booking-buttons">
@@ -339,12 +355,16 @@ const AccountPage = () => {
               )}
               </div>
             ))}
-          <button className="sign-out-button" onClick={handleSignOut}>
+           {showPopup && <Popup message={popmsg} />} 
+          <button className="" onClick={handleSignOut}>
+           
+            <span>Sign Out     {"  "}</span>
+           
             <FiLogOut />
-            <span>Sign Out</span>
           </button>
         </div>
       )}
+      <img src="//unpkg.com/three-globe/example/img/night-sky.png" alt="star pic" className="bg-image account-bg-img" />
     </div>
   )
 }
