@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import DataCard from '../components/DataCard'
 import logo from '../media/gg312.png'
 import fullImage from '../media/shut.png'
-// import Wireframe from '../components/Wireframe'; 
+// import Wireframe from '../components/Wireframe';
 import vi from '../media/plvid.png'
 import image2 from '../media/gghanger.png'
 import image3 from '../media/ggint.png'
@@ -23,23 +23,9 @@ import dataBg from '../media/dlaunch.jpg'
 import background from '../media/stars-mobile.webp'
 
 const data = {
-  link: '/contact'
+  link: '/contact',
 }
-// const images = [
-//   // { id: 1, src: image1, alt: 'Image 1', location: 'section1' },
-//   { id: 1, src: image1, alt: 'Image 1', location: 'section2' },
-//   { id: 2, src: image7, alt: 'Image 2', location: 'section1' },
-//   { id: 3, src: image3, alt: 'Image 3', location: 'section1' },
-//   { id: 6, src: image6, alt: 'Image 6', location: 'section1' },
-//   { id: 9, src: image9, alt: 'Image 9', location: 'section1' },
-//   { id: 11, src: image11, alt: 'Image 11', location: 'section1' },
-//   { id: 7, src: image2, alt: 'Image 7', location: 'section1' },
-//   { id: 8, src: image8, alt: 'Image 8', location: 'section2' },
-//   { id: 5, src: image5, alt: 'Image 5', location: 'section2' },
-//   { id: 9, src: image9, alt: 'Image 9', location: 'section1' },
-//   { id: 10, src: image5, alt: 'Image 10', location: 'section2' },
-//   { id: 4, src: image6, alt: 'Image 4', location: 'section1' },
-// ]
+
 const Home = () => {
   const [info, setInfo] = useState([])
 
@@ -63,11 +49,12 @@ const Home = () => {
   return (
     <div className="star-image home-container pg-wrap">
       <div className="logo-container">
-        <img src={logo} alt="company logo" className="logo" />
+        <img src=  'https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fgg312.webp?alt=media&token=4cfb3dc6-eaf0-4f88-8d17-0e965d599e8f' alt="company logo" className="logo" />
       </div>
       <div className="full-image-container">
         <div className="full-image-overlay">
-          <img src={fullImage} alt="stars" className="full-image" />
+          <img src={image1} className="full-image" />
+          {/* <img src='https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fshut.webp?alt=media&token=240f3c48-65e2-456e-ade5-3b14b47efc22' alt="stars" className="full-image" /> */}
         </div>
       </div>
       <div className="intro-video">
@@ -77,9 +64,11 @@ const Home = () => {
         </video>
       </div>
       <div className="home-content">
-        <img src={background} alt="star pic" className="bg-image"/>
+        <img src="//unpkg.com/three-globe/example/img/night-sky.png" alt="star pic" className="bg-image" />
         {/* <div className="bgol"></div> */}
         {info.map((name, index) => (
+          
+         
           <DataCard key={index} name={name} link={data.link} index={index} />
         ))}
       </div>
