@@ -4,18 +4,23 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase'; 
 import { RiGoogleFill } from 'react-icons/ri'; 
 import logo from '../media/gg312.png'
+import Popup from '../components/Popup';
 
 const Login = () => {
   const navigate = useNavigate();
   const [slideLeft, setSlideLeft] = useState(false);
   const [showLoginText, setShowLoginText] = useState(true);
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
+        setShowPopup(true);
         console.log('Logged in:', result.user);
-        navigate('/');
+        setTimeout(() => {
+          navigate('/'); // Navigate after showing the popup for a while
+        }, 3000);
       })
       .catch((error) => {
         console.error('Login error:', error);
@@ -55,6 +60,8 @@ const Login = () => {
       {showLoginText && (
         <h2 className={`login-text ${slideLeft ? '' : 'fade-out'}`}>ALACTIC GETAWAYS</h2>
       )}
+             {showPopup && <Popup message="Logged in successfully!" />}
+
     </div>
   );
 };

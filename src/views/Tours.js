@@ -150,8 +150,13 @@ const Tours = () => {
         </li>
         
       </div>
-     <InteractiveGlobe lat={issData.latitude} long={issData.longitude} />
+      <div className="globe-wrap">
+<div className="scroller left"></div>
+      <InteractiveGlobe lat={issData.latitude} long={issData.longitude} />
      <img src={img1} className='ss' />
+     <div className="scroller right"></div>
+      </div>
+     
       <div className="star-image outer-container ">
         <div className="glass-box" id="box">
           <div className="tours-info-box">

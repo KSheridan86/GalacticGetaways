@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@200;300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;700&display=swap');
 
 @font-face {
   font-family: 'NASA';
@@ -19,19 +19,37 @@ $primary-color: #b92eff;
 //   position: absolute;
 //   top: 0;
 //   left: 0;
-//   pointer-events: none; 
+//   pointer-events: none;
 // }
 canvas {
   position: absolute;
 }
-
+.globe-wrap {
+  width: 100vw;
+  min-height: 700px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .scroller {
+    height: 100%;
+    width: 20%;
+    position: absolute;
+    z-index: 100000;
+  }
+  .left {
+    left: 0%;
+  }
+  .right {
+    right: 0%;
+  }
+}
 .mapper {
   position: relative;
   overflow: hidden;
-  width: 400px;
+  width: 80vw;
   margin-top: 20px;
   height: 300px;
-  z-index: 10000;
+  z-index: 1;
   border-radius: 5px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   .map {
@@ -45,6 +63,7 @@ canvas {
     z-index: 1 !important;
   }
 }
+
 body,
 html {
   -webkit-tap-highlight-color: transparent;
@@ -53,7 +72,7 @@ html {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
-  font-family: 'Lato', Arial, sans-serif;
+  font-family: 'Oswald', Arial, sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -64,7 +83,7 @@ body {
 
 .nasa {
   font-family: 'NASA', sans-serif;
-  text-transform: capitalize;
+  text-transform: uppercase;
 }
 
 .live-map {
@@ -77,7 +96,7 @@ h4,
 h5,
 h6 {
   font-family: 'NASA', sans-serif;
-  text-transform: capitalize;
+  text-transform: uppercase;
   color: $primary-color;
   font-weight: 300;
 }
@@ -200,7 +219,9 @@ button {
 .app {
   width: 100%;
 }
-
+.req-in {
+  font-size: 1.5em;
+}
 #map-container {
   height: 70vh;
   width: 100%;
@@ -212,9 +233,67 @@ button {
 
 /* NAVIGATION */
 
+.popup-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message2 {
+  flex-grow: 1;
+}
+
+.close-button2 {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+.popup-wrapper {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  animation: slideIn 0.5s forwards;
+  z-index: 9999999;
+}
+
+.popup-slide-in {
+  background-color: #000000a7;
+  // border: 1px solid #dddddd;
+  padding: 10px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(255, 0, 162, 0.798);
+  animation: slideIn 0.5s forwards, fadeOut 0.5s 2s forwards;
+  p {
+    font-family: 'NASA', sans-serif;
+    text-transform: uppercase;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .packages {
   // border: 1px solid #fff;
   border-radius: 5px;
+  font-size: 1em;
+  font-weight: 300;
   margin: 20px;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.8);
@@ -438,8 +517,9 @@ button {
       position: fixed;
       bottom: 10%;
       right: 10%;
-      transform: translate(-50%, -50%);
+      transform: translate(0%, -50%);
       background-color: #111;
+      z-index: 1000;
       padding: 10px 20px 20px 20px;
       border-radius: 5px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -710,6 +790,49 @@ button {
   text-transform: uppercase;
 }
 /* ACCOUNT */
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  padding: 10px;
+  button {
+    padding: 10px 15px;
+    border: none;
+    box-shadow: 0px 0px 10px rgb(185, 46, 255);
+  }
+  button:hover {
+    padding: 10px 15px;
+    border: none;
+    box-shadow: 0px 0px 10px rgb(185, 46, 255);
+  }
+}
+.profile-btn {
+  padding: 10px 15px;
+  border: none;
+  box-shadow: 0px 0px 10px rgb(185, 46, 255);
+}
+.profile-btn:hover {
+  padding: 10px 15px;
+  border: none;
+  box-shadow: 0px 0px 10px rgb(185, 46, 255);
+}
+.loader-acc {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    font-family: 'NASA', sans-serif;
+    text-transform: uppercase;
+  }
+}
+.booking-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+}
 .booking-edit {
   display: flex;
   flex-direction: column;
@@ -720,10 +843,17 @@ button {
   textarea,
   input {
     border: none;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    font-size: 1.2em;
     background-image: none;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 5px;
     width: 100%;
+  }
+  textarea {
+    padding: 8px;
   }
 }
 .edit-btn-book {
@@ -758,13 +888,21 @@ button {
   margin: 0 0 10px 0;
   ul {
     list-style: none;
-    margin: 0;
+    margin: 5px 0 0 10px !important;
     display: flex;
-    width: 100%;
-    padding: 20px 0;
-    align-items: center;
+    // width: 100%;
+    // padding: 20px 0;
+    padding-bottom: 15px;
+    align-items: flex-start;
     flex-direction: column;
+    width: fit-content;
     justify-content: center;
+    p {
+      margin: 10px;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 300;
+      font-size: 1.2em;
+    }
     button {
       position: relative;
       padding: 3px 20px;
@@ -775,9 +913,9 @@ button {
       letter-spacing: 0.01em;
       border-radius: 50px;
       border: none;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      box-shadow: 2px 2px 5px rgba(255, 4, 234, 0.5);
       cursor: pointer;
-      background-color: #11111142;
+      background-color: #1111117c;
       overflow: hidden;
       transition: background-color 0.5s ease-in-out;
       margin: 0 5px;
@@ -785,7 +923,7 @@ button {
     div {
       padding: 0 0 0 20px;
     }
-    strong {
+    span {
       font-family: 'NASA', sans-serif;
       font-size: 1.2em;
     }
@@ -799,6 +937,10 @@ button {
   padding: 20px;
   min-height: calc(100vh - 56px);
   color: #fff;
+}
+
+.loading-acc {
+  min-height: 50vh;
 }
 
 .account-heading {
@@ -874,7 +1016,13 @@ select:focus {
   display: flex;
   gap: 1rem;
 }
-
+.edit-button {
+  button {
+    padding: 10px 15px !important;
+    border: none !important;
+    box-shadow: 0px 0px 10px rgb(185, 46, 255) !important;
+  }
+}
 .sign-out-button {
   display: flex;
   align-items: center;
@@ -899,7 +1047,9 @@ select:focus {
   .account-page {
     padding: 20px;
   }
-
+  .loading-acc {
+    min-height: 50vh;
+  }
   .avatar {
     width: 100px;
     height: 100px;
@@ -922,6 +1072,9 @@ select:focus {
 @media (min-width: 481px) and (max-width: 728px) {
   .account-page {
     padding: 15px;
+  }
+  .loading-acc {
+    min-height: 50vh;
   }
 
   .avatar {
@@ -980,7 +1133,7 @@ select:focus {
   margin: 0 5vw;
   background-color: rgba(0, 0, 0, 0.5);
   .tour-cont {
-    font-size: 1.3em;
+    font-size: 1.1em;
   }
 }
 
@@ -1143,7 +1296,7 @@ select:focus {
     border: none;
     border-radius: 5px;
     color: #fff;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Oswald', sans-serif;
     border-color: 1px solid #0063ff !important;
   }
 
@@ -1179,6 +1332,7 @@ button[type='submit'] {
   position: fixed;
   top: 50%;
   left: 50%;
+  width: 80vw;
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.8);
   padding: 20px;
@@ -1345,7 +1499,7 @@ body {
   position: absolute;
   top: 65%;
   width: 40px;
- left: 50%
+  left: 50%;
 }
 
 .hero-image-placeholder,
@@ -1496,6 +1650,7 @@ body {
   background-color: #333;
   padding: 10px;
   position: fixed;
+  z-index: 100000;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -1800,41 +1955,97 @@ body {
 /* Tablet & Desktop version */
 
 @media only screen and (min-width: 728px) {
+  .globe-wrap {
+    width: 100%;
+    max-height: 800px;
+  }
+  .mapper {
+    position: relative;
+    overflow: hidden;
+    width: 30vw;
+    margin-top: 20px;
+    height: 300px;
+    z-index: 1;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    .map {
+      height: 108%;
+    }
+  }
+  .popupf {
+    position: fixed;
+    bottom: 10%;
+    right: 10%;
+    transform: translate(0%, -50%);
+    background-color: #111;
+    z-index: 1000;
+    padding: 10px 20px 20px 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: fade-in-out 2s;
+    animation-fill-mode: forwards;
+  }
+  .popupf,
+  h2,
+  p {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    height: 85vh;
+    color: #fff;
+    object-position: center;
+    object-fit: cover;
+  }
   .ss {
     z-index: 1000;
     position: absolute;
-    top: 55%;
+    top: 60vh;
     width: 40px;
     left: 50%;
-}
+  }
   .user-info {
     width: 100vw;
     .nasa {
       font-size: 2em;
     }
   }
+
   .booking {
-    width: 100%;
     background-image: linear-gradient(
       159deg,
       rgba(185, 46, 255, 1) 0%,
       rgba(0, 99, 255, 1) 100%
     );
-    width: 80%;
+    width: 50%;
     border-radius: 5px;
     padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0 0 10px 0;
     ul {
       list-style: none;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
+      width: fit-content;
       div {
         padding: 0 0 0 20px;
+        text-align: left;
       }
-      strong {
+      span {
         font-family: 'NASA', sans-serif;
         font-size: 1.2em;
+        text-align: left;
       }
     }
   }
@@ -1887,10 +2098,9 @@ body {
   }
   .logo-container {
     display: none;
-     z-index: 10;
+    z-index: 10;
   }
   .navbar {
-   
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -2398,32 +2608,29 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px; 
+  height: 100px;
 }
 
-
 .circle {
-  width: 100px; 
+  width: 100px;
   height: 100px;
-  border-radius: 50%; 
-  background-color: lightgray; 
+  border-radius: 50%;
+  background-color: lightgray;
 }
 
 .circle-container-big {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 300px; 
+  height: 300px;
 }
-
 
 .circle-big {
-  width: 300px; 
+  width: 300px;
   height: 300px;
-  border-radius: 50%; 
-  background-color: lightgray; 
+  border-radius: 50%;
+  background-color: lightgray;
 }
-
 
 .mobile-view {
   .wf-hide {
@@ -2444,7 +2651,7 @@ body {
       margin-left: -150px;
       text-align: center;
       .news-btn {
-        color:#000000c4
+        color: #000000c4;
       }
       .nav-item {
         text-align: center;
@@ -2456,7 +2663,7 @@ body {
       width: 200px !important;
       flex-direction: column;
       justify-content: flex-start;
-      h2{
+      h2 {
         margin-bottom: 3px;
       }
     }
@@ -2484,12 +2691,11 @@ body {
   position: fixed;
   z-index: 1000;
 }
-.log-wf{
+.log-wf {
   min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 .desktop-view,
 .tablet-view {
@@ -2498,23 +2704,22 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: center;
-}
-.log-wf{
-  min-height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-.wf-account {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.account-holder {
-  width: 500px;
-}
+  }
+  .log-wf {
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wf-account {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .account-holder {
+    width: 500px;
+  }
   .navigation {
     display: none;
   }
@@ -2522,7 +2727,6 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
   }
   .wf-news {
     margin-top: -30px;
@@ -2536,14 +2740,13 @@ body {
     align-items: center;
     justify-content: space-evenly;
     height: fit-content;
-}
+  }
   .content-wireframe {
     display: flex;
     .content-item {
       width: 20%;
       margin: 10px;
     }
-  
   }
   .hero-wireframe {
     // width: 100vw;
