@@ -20,7 +20,7 @@ const Login = () => {
         console.log('Logged in:', result.user);
         setTimeout(() => {
           navigate('/'); // Navigate after showing the popup for a while
-        }, 3000);
+        }, 1000);
       })
       .catch((error) => {
         console.error('Login error:', error);
@@ -46,6 +46,7 @@ const Login = () => {
 
   return (
     <div className='login-container pg-wrap'>
+      <img src="//unpkg.com/three-globe/example/img/night-sky.png" alt="star pic" className="bg-image account-bg-img" />
       <div className="logo-container">
         <img src={logo} alt="logo Image" className="logo" />
       </div>

@@ -229,6 +229,7 @@ const AccountPage = () => {
 
   return (
     <div className="account-page">
+      
       <div className="logo-container">
         <img src={logo} alt="logo Image" className="logo" />
       </div>
@@ -338,7 +339,7 @@ const AccountPage = () => {
                 </p>
               </li>
               <li>
-                <p>
+                <p className='acc-msg'>
                   <span>Message: </span> {b.data.message}
                 </p>
               </li>
@@ -363,6 +364,7 @@ const AccountPage = () => {
           </button>
         </div>
       )}
+      <img src="//unpkg.com/three-globe/example/img/night-sky.png" alt="star pic" className="bg-image account-bg-img" />
     </div>
   )
 }

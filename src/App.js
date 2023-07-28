@@ -6,6 +6,7 @@ import Contact from './views/Contact';
 import Login from './views/Login';
 import Tours from './views/Tours';
 import About from './views/About';
+import ReportVid from './views/ReportVid'
 import Account from './views/Account';
 import { auth } from './firebase';
 import WireframeDisplay from './components/WireframeDisplay';
@@ -54,6 +55,7 @@ const App = () => {
               <Route path="/account" element={<Account />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/privacy" element={<Privacy />} />
+              <Route path="/video" element={<ReportVid />} />
             </Routes>
           <Footer />
       </div>
