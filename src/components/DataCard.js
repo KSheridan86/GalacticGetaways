@@ -7,7 +7,7 @@ const images = [
   'https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fggint.webp?alt=media&token=a1859b19-7e6c-44e3-9c47-c481205a9f8a',
   'https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fggs.webp?alt=media&token=83c9f431-b23f-4a48-80b4-3cd7859e18f7',
   'https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fint3M.webp?alt=media&token=5b0d1974-8bd2-4d8f-8d7a-d57eae6b16bd',
-  "https://i.ibb.co/cTMRyX4/intkid.png",
+  "https://i.ibb.co/bg7GHZb/intkid-space.webp",
   'https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fstars-mobile.webp?alt=media&token=a037265f-4214-48cb-9fad-faf13b3731bd',
   'https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fcolsky.webp?alt=media&token=094e7463-d950-47ad-8c03-cd56a2a3858d',
 

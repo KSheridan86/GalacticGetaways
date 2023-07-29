@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import upArrowImage from '../media/back-to-top.png';
+import { PiCaretCircleDoubleUpFill } from "react-icons/pi";
+import { RiArrowUpDoubleFill } from 'react-icons/ri'
 
 const ScrollUp = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -26,9 +28,13 @@ const ScrollUp = () => {
     };
 
     return (
-        <div className={`back-to-top-button ${isVisible ? 'visible' : ''}`}>
-            <img src={upArrowImage} className="img-shadow" alt="up arrow" onClick={scrollUp} />
-        </div>
+        <>
+  
+      <div className={`back-to-top-button ${isVisible ? 'visible' : ''}`} onClick={scrollUp}>
+        <PiCaretCircleDoubleUpFill   />
+      </div>
+        </>
+      
     );
 };
 

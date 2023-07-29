@@ -1,11 +1,9 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
-import { HiChevronDown } from 'react-icons/hi'
+import { NavLink } from 'react-router-dom'
 import logo from '../media/gg312.png'
 import { getAuth } from 'firebase/auth'
 
 const DeskNav = () => {
-  // const location = useLocation();
   const auth = getAuth()
   const isLoggedIn = auth.currentUser !== null
 
@@ -14,7 +12,11 @@ const DeskNav = () => {
       <div className="navbar-logo">
         <NavLink to="/">
           {' '}
-          <img src={logo} alt="Logo" className="logo-image" />
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fgg312.webp?alt=media&token=4cfb3dc6-eaf0-4f88-8d17-0e965d599e8f"
+            alt="Logo"
+            className="logo-image"
+          />
         </NavLink>
       </div>
       <ul className={`navbar-Navlinks navbar-menu`}>
@@ -30,25 +32,8 @@ const DeskNav = () => {
 
         <li className="navbar-dropdown">
           <a href="/tours" className=" drop-arrow">
-            {/* Tours <HiChevronDown /> */} Tours
+            Tours
           </a>
-          {/* <ul className="dropdown-menu">
-            <li className="drop-item">
-              <a href="/tours#basic">Basic</a>
-            </li>
-            <li className="drop-item">
-              <a href="/tours#earth-orbit">Earth Orbit</a>
-            </li>
-            <li className="drop-item">
-              <a href="/tours#moon-landing">Moon Landing</a>
-            </li>
-            <li className="drop-item">
-              <a href="/tours#deluxe">Deluxe</a>
-            </li>
-            <li className="drop-item">
-              <a href="/tours#all-in-one">All in One</a>
-            </li>
-          </ul> */}
         </li>
         <li>
           {isLoggedIn ? (
