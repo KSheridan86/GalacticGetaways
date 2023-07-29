@@ -6,6 +6,7 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import img1 from '../media/space-station.png'
 import logo from '../media/gg312.png'
+import { FaSpaceShuttle } from "react-icons/fa";
 import spaceStationIcon from '../media/space-station.png'
 
 
@@ -19,6 +20,7 @@ const Tours = () => {
   const [altitude, setAltitude] = useState(0)
   const [latitude, setLatitude] = useState(0)
   const [longitude, setLongitude] = useState(0)
+  const [showPopup, setShowPopup] = useState(false);
 
 
   useEffect(() => {
@@ -126,6 +128,11 @@ const Tours = () => {
         <img src={logo} alt="company logo" className="logo" />
       </div>
       <div className="tour-menu">
+        <div className="shut-iss  rotate">
+        <FaSpaceShuttle className='pulsate rotate' onMouseEnter={() => setShowPopup(true)} onMouseLeave={() => setShowPopup(false)}/>
+        {showPopup && <div className="popup  rotate2">Rotate Earth To Find The ISS</div>}
+        </div>
+     
       <li className="navbar-dropdown tour-pack">
           <a className="drop-tour drop-arrow" href="#">
             Tour Packages <HiChevronDown />
@@ -148,12 +155,11 @@ const Tours = () => {
             </li>
           </ul>
         </li>
-        
       </div>
       <div className="globe-wrap">
 <div className="scroller left"></div>
       <InteractiveGlobe lat={issData.latitude} long={issData.longitude} />
-     <img src={img1} className='ss' />
+     {/* <img src={img1} className='ss' /> */}
      <div className="scroller right"></div>
       </div>
      
