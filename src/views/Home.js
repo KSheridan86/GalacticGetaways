@@ -56,7 +56,7 @@ const Home = () => {
       </div>
       <div className="home-content">
         <img
-          src="https://i.ibb.co/swY2MTr/night-sky.webp"
+       src="https://i.ibb.co/MGQQKpg/night-sky.webp" 
           alt="night-sky"
           className="bg-image"
         />

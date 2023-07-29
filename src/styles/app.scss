@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;700&display=swap');
-
 @font-face {
   font-family: 'NASA';
   src: url('./fonts/nasa.woff') format('woff');
+  font-display: swap;
 }
 
 $column-margin-right: 20px;
@@ -606,15 +605,15 @@ button {
 
 .logo-container {
   position: relative;
-  width: 100%;
-  // height: 190px;
+  width: 100vw;
+  height: 170px;
   z-index: 100 !important;
 }
 
 .logo {
-  width: 100%;
+  width: 100vw;
   z-index: 100;
-  height: 190px;
+  height: 150px;
 }
 
 /* HOME */
@@ -658,7 +657,7 @@ button {
 
 .full-image-container {
   position: relative;
-  height: calc(100vh - 256px);
+  height: 70vh;
   overflow: hidden;
 }
 
@@ -941,7 +940,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px;
+  padding: 0 20px 20px;
   min-height: calc(100vh - 56px);
   color: #fff;
 }
@@ -1158,7 +1157,7 @@ select:focus {
 }
 
 .star-image {
-  background-image: url('//unpkg.com/three-globe/example/img/night-sky.png') ;
+  background-image: url("https://i.ibb.co/dk8yKT6/night-sky.webp") ;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -1232,7 +1231,7 @@ select:focus {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   color: #fff;
   object-position: center;
   object-fit: cover;
@@ -2100,18 +2099,29 @@ body {
   .back-to-top-button {
     font-size: 2rem;
     border: none;
-    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: inline-block;
     bottom: 40px;
-    right: 30px;
+    right: 10px;
     z-index: 1000;
-
-    // border-radius: 50%;
+    border-radius: 50%;
     opacity: 0;
+    // width: 40px;
+    // height: 40px;
     visibility: hidden;
     transition: opacity 0.3s, visibility 0.3s;
     animation: bounce 0.5s 6 alternate;
+
+  background: linear-gradient(159deg, rgba(185, 46, 255, 1) 0%, rgba(0, 99, 255, 1) 100%);
+  display: inline-block;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   }
   .back-to-top-button.visible {
+    
     opacity: 1;
     visibility: visible;
   }
@@ -2402,12 +2412,14 @@ body {
 
   .full-image-container {
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.8);
+    height: 90vh;
   }
   .home-container {
     .data-card {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-shadow: 2px 2px 5px #b92eff88;
       align-items: center;
       width: 350px;
       height: fit-content;
@@ -2437,7 +2449,8 @@ body {
         justify-content: space-between;
         flex-direction: column;
         .data-title {
-          margin: 5px 5px 0 5px;
+          margin: 5px 0;
+          font-size: 1.4em;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
