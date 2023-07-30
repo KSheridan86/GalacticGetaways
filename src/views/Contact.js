@@ -3,8 +3,7 @@ import emailjs from 'emailjs-com'
 import logo from '../media/gg312.png'
 import bg from '../media/shut.png'
 import '../index.css'
-import { Map, GoogleApiWrapper, Marker } from '@react-google-maps/api'
-import MapContainer from '../components/MapContainer'
+
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import {
   collection,
@@ -21,7 +20,7 @@ import Popup from '../components/Popup'
 const Contact = () => {
   const [tourPlace, setTourPlace] = useState('')
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [popmsg, setPopmsg] = useState('')
+  const [popmsg, setPopmsg] = useState('') 
   const [showPopup, setShowPopup] = useState(false)
   const [isSignedIn, setIsSignedIn] = useState(false);
 

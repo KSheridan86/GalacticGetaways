@@ -46,9 +46,17 @@ const Login = () => {
 
   return (
     <div className='login-container pg-wrap'>
-      <img src="//unpkg.com/three-globe/example/img/night-sky.png" alt="star pic" className="bg-image account-bg-img" />
+        <img
+       src="https://i.ibb.co/MGQQKpg/night-sky.webp" 
+          alt="night-sky"
+          className="bg-image"
+        />
       <div className="logo-container">
-        <img src={logo} alt="logo Image" className="logo" />
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fgg312.webp?alt=media&token=4cfb3dc6-eaf0-4f88-8d17-0e965d599e8f"
+          alt="company logo"
+          className="logo"
+        />
       </div>
       <div
         className={`google-icon-container ${slideLeft ? 'slide-left' : ''}`}

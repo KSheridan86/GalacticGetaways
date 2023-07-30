@@ -12,6 +12,7 @@ const LazyThreeGlobe = React.memo(({ lat, long }) => {
 
   useEffect(() => {
     
+    
     const globeInstance = new ThreeGlobe().globeImageUrl('//unpkg.com/three-globe/example/img/earth-night.jpg');
     globeInstanceRef.current = globeInstance;
 
@@ -78,7 +79,9 @@ const LazyThreeGlobe = React.memo(({ lat, long }) => {
     return () => {
       renderer.dispose();
       controlsRef.current.dispose();
-      globeRef.current.removeEventListener('wheel', handleScroll);
+      if (globeRef.current) {
+        globeRef.current.removeEventListener('wheel', handleScroll);
+      }
     };
   }, []); 
 

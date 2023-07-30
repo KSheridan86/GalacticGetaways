@@ -18,7 +18,7 @@ import {
   where,
   getDocs,
 } from 'firebase/firestore'
-import { FiLogOut, FiEdit3, FiCheck, FiTrash, FiX  } from 'react-icons/fi'
+import { FiLogOut, FiEdit3, FiCheck, FiTrash, FiX } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import logo from '../media/gg312.png'
 import Popup from '../components/Popup'
@@ -33,67 +33,67 @@ const AccountPage = () => {
   const [editPackage, setEditPackage] = useState('')
   const [editMessage, setEditMessage] = useState('')
   const [avatarFile, setAvatarFile] = useState(null)
-  const [editingBookingId, setEditingBookingId] = useState(null);
+  const [editingBookingId, setEditingBookingId] = useState(null)
+  const [selectedPackage, setSelectedPackage] = useState('');
   const [bookings, setBookings] = useState([])
-  const [loadingBookings, setLoadingBookings] = useState(true);
+  const [loadingBookings, setLoadingBookings] = useState(true)
   const navigate = useNavigate()
   const [popmsg, setPopmsg] = useState('')
   const [showPopup, setShowPopup] = useState(false)
 
   async function getBookings() {
     try {
-      const auth = getAuth();
-      const user = auth.currentUser;
-      
-      console.log('Current User:', user);
+      const auth = getAuth()
+      const user = auth.currentUser
+
+      console.log('Current User:', user)
 
       if (user) {
-        const bookingsRef = collection(db, 'bookings');
+        const bookingsRef = collection(db, 'bookings')
         const querySnapshot = await getDocs(
           query(bookingsRef, where('userId', '==', user.uid))
-        );
-        const data = querySnapshot.docs.map((doc) => ({
+        )
+        const data = querySnapshot.docs.map(doc => ({
           data: doc.data(),
           id: doc.id,
-        }));
-        setBookings(data);
+        }))
+        setBookings(data)
 
-      setLoadingBookings(false);
+        setLoadingBookings(false)
       }
     } catch (error) {
-      setLoadingBookings(false);
-      console.log('Error getting Bookings:', error);
+      setLoadingBookings(false)
+      console.log('Error getting Bookings:', error)
     }
   }
 
   useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
-      setUser(currentUser);
-  
+    const auth = getAuth()
+    const unsubscribe = onAuthStateChanged(auth, async currentUser => {
+      setUser(currentUser)
+
       if (currentUser) {
-        setName(currentUser.displayName || '');
-        setEmail(currentUser.email || '');
-        setAvatar(currentUser.photoURL || '');
-  
-        const bookingsRef = collection(db, 'bookings');
+        setName(currentUser.displayName || '')
+        setEmail(currentUser.email || '')
+        setAvatar(currentUser.photoURL || '')
+
+        const bookingsRef = collection(db, 'bookings')
         const querySnapshot = await getDocs(
           query(bookingsRef, where('userId', '==', currentUser.uid))
-        );
-        const data = querySnapshot.docs.map((doc) => ({
+        )
+        const data = querySnapshot.docs.map(doc => ({
           data: doc.data(),
           id: doc.id,
-        }));
-        setBookings(data);
-        setLoadingBookings(false);
+        }))
+        setBookings(data)
+        setLoadingBookings(false)
       }
-    });
-  
+    })
+
     return () => {
-      unsubscribe();
-    };
-  }, []);
-  
+      unsubscribe()
+    }
+  }, [])
 
   const handleNameChange = e => {
     setName(e.target.value)
@@ -143,69 +143,72 @@ const AccountPage = () => {
         console.error('Error updating profile:', error)
       }
     }
-    setPopmsg('Updated Successfully'); // Set the popup message before showing the popup
-      setShowPopup(true); // Show the popup
-      setTimeout(() => {
-        setShowPopup(false); // Hide the popup after 3 seconds
-        setPopmsg(''); // Clear the popup message
-      }, 3000);
+    setPopmsg('Updated Successfully') 
+    setShowPopup(true) 
+    setTimeout(() => {
+      setShowPopup(false) 
+      setPopmsg('') 
+    }, 3000)
   }
   const handleEditBooking = (bookingId) => {
     const currentBooking = bookings.find((booking) => booking.id === bookingId);
     if (currentBooking) {
       setEditPackage(currentBooking.data.package);
       setEditMessage(currentBooking.data.message);
+      setSelectedPackage(currentBooking.data.package); 
     }
     setEditingBookingId(bookingId);
   };
+  
   const handleCancelEdit = () => {
-    setEditPackage(''); 
-    setEditMessage('');
-    setEditingBookingId(null);
-  };
+    setEditPackage('')
+    setEditMessage('')
+    setEditingBookingId(null)
+  }
 
   const handleUpdateBooking = async (bookingId) => {
     try {
       const bookingsRef = collection(db, "bookings");
       await updateDoc(doc(bookingsRef, bookingId), {
-        package: editPackage,
+        package: selectedPackage, 
         message: editMessage,
       });
       getBookings();
-      setPopmsg('Ticket Updated'); // Set the popup message before showing the popup
-      setShowPopup(true); // Show the popup
+      setPopmsg('Ticket Updated');
+      setShowPopup(true);
       setTimeout(() => {
-        setShowPopup(false); // Hide the popup after 3 seconds
-        setPopmsg(''); // Clear the popup message
+        setShowPopup(false);
+        setPopmsg('');
       }, 3000);
-      setEditingBookingId(null); // Exit edit mode
+      setEditingBookingId(null);
     } catch (error) {
       console.error("Error updating booking:", error);
     }
   };
+  
 
-  const handleDeleteBooking = async (bookingId) => {
+  const handleDeleteBooking = async bookingId => {
     try {
-      const bookingsRef = collection(db, "bookings");
-      await deleteDoc(doc(bookingsRef, bookingId));
-      getBookings(); 
-      setPopmsg('Ticket Deleted'); 
-      setShowPopup(true); 
+      const bookingsRef = collection(db, 'bookings')
+      await deleteDoc(doc(bookingsRef, bookingId))
+      getBookings()
+      setPopmsg('Ticket Deleted')
+      setShowPopup(true)
       setTimeout(() => {
-        setShowPopup(false); 
-        setPopmsg(''); 
-      }, 3000);
+        setShowPopup(false)
+        setPopmsg('')
+      }, 3000)
     } catch (error) {
-      console.error("Error deleting booking:", error);
+      console.error('Error deleting booking:', error)
     }
-  };
+  }
 
   const handleSignOut = () => {
     const auth = getAuth()
     signOut(auth)
       .then(() => {
         console.log('User signed out successfully!')
-          navigate('/'); // Navigate after showing the popup for a while
+        navigate('/') // Navigate after showing the popup for a while
       })
       .catch(error => {
         console.error('Error signing out:', error)
@@ -213,7 +216,11 @@ const AccountPage = () => {
   }
 
   if (!user) {
-    return <div className='loader-acc'><h1>Loading...</h1></div>
+    return (
+      <div className="loader-acc">
+        <h1>Loading...</h1>
+      </div>
+    )
   }
 
   const formatDate = date => {
@@ -229,16 +236,22 @@ const AccountPage = () => {
 
   return (
     <div className="account-page">
-      
       <div className="logo-container">
-        <img src={logo} alt="logo Image" className="logo" />
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fgg312.webp?alt=media&token=4cfb3dc6-eaf0-4f88-8d17-0e965d599e8f"
+          alt="company logo"
+          className="logo"
+        />
       </div>
       <h1 className="intro-head">Account Page</h1>
       {user && (
         <div className="user-info">
           <div className="edit-button">
             {!isEditMode ? (
-              <button className='profile-btn' onClick={() => setIsEditMode(true)}>
+              <button
+                className="profile-btn"
+                onClick={() => setIsEditMode(true)}
+              >
                 <FiEdit3 />
               </button>
             ) : (
@@ -294,77 +307,86 @@ const AccountPage = () => {
           )}
           <h3 className="nasa req-in">Requested Information</h3>
           {bookings.map((b, i) => (
-        <div className="booking" key={i}>
-          {editingBookingId === b.id ? (
-        
-            <div className="booking-edit">
-              <input
-                type="text"
-                value={editPackage}
-                onChange={(e) => setEditPackage(e.target.value)}
-              />
-              <textarea
-                rows="5"
-                value={editMessage}
-                onChange={(e) => setEditMessage(e.target.value)}
-              />
-              <div className="edit-btn-book">
-              <button onClick={() => handleUpdateBooking(b.id)}>
-                <FiCheck />
-              </button>
-              <button onClick={handleCancelEdit}>
-                <FiX  />
-              </button>
-              </div>
-             
-            </div>
-          ) : (
-            <ul>
-              <li>
-                <p>
-                  <span>Package: </span> {b.data.package}
-                </p>
-              </li>
-              <li>
-                <p>
-                  <span>Status: </span> {b.data.status}
-                </p>
-              </li>
-              <li>
-                <p>
-                  <span>Date: </span>{" "}
-                  {b.data.date?.seconds
-                    ? formatDate(new Date(b.data.date.seconds * 1000))
-                    : "N/A"}
-                </p>
-              </li>
-              <li>
-                <p className='acc-msg'>
-                  <span>Message: </span> {b.data.message}
-                </p>
-              </li>
-              <div className="booking-buttons">
-                <button onClick={() => handleEditBooking(b.id)}>
-                  <FiEdit3 />
-                </button>
-                <button onClick={() => handleDeleteBooking(b.id)}>
-                  <FiTrash />
-                </button>
-              </div>
-            </ul>
+            <div className="booking" key={i}>
+              {editingBookingId === b.id ? (
+                <div className="booking-edit">
+                  <select
+                  className="edit-package"
+                    value={selectedPackage}
+                    onChange={e => setSelectedPackage(e.target.value)}
+                  >
+                    <option value="Basic">Basic</option>
+                    <option value="Orbit">Earth Orbit</option>
+                    <option value="MoonLanding">Moon Landing</option>
+                    <option value="Interstellar">Interstellar</option>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="All">All-in-one</option>
+                  </select>
+
+                  <textarea
+                    rows="5"
+                    value={editMessage}
+                    onChange={e => setEditMessage(e.target.value)}
+                  />
+                  <div className="edit-btn-book">
+                    <button onClick={() => handleUpdateBooking(b.id)}>
+                      <FiCheck />
+                    </button>
+                    <button onClick={handleCancelEdit}>
+                      <FiX />
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <ul>
+                  <li>
+                    <p>
+                      <span>Package: </span> {b.data.package}
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <span>Status: </span> {b.data.status}
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <span>Date: </span>{' '}
+                      {b.data.date?.seconds
+                        ? formatDate(new Date(b.data.date.seconds * 1000))
+                        : 'N/A'}
+                    </p>
+                  </li>
+                  <li>
+                    <p className="acc-msg">
+                      <span>Message: </span> {b.data.message}
+                    </p>
+                  </li>
+                  <div className="booking-buttons">
+                    <button onClick={() => handleEditBooking(b.id)}>
+                      <FiEdit3 />
+                    </button>
+                    <button onClick={() => handleDeleteBooking(b.id)}>
+                      <FiTrash />
+                    </button>
+                  </div>
+                </ul>
               )}
-              </div>
-            ))}
-           {showPopup && <Popup message={popmsg} />} 
+            </div>
+          ))}
+          {showPopup && <Popup message={popmsg} />}
           <button className="" onClick={handleSignOut}>
-           
-            <span>Sign Out     {"  "}</span>
-           
+            <span>Sign Out {'  '}</span>
+
             <FiLogOut />
           </button>
         </div>
       )}
-      <img src="//unpkg.com/three-globe/example/img/night-sky.png" alt="star pic" className="bg-image account-bg-img" />
+      <img
+        src="https://i.ibb.co/MGQQKpg/night-sky.webp"
+        alt="night-sky"
+        className="bg-image"
+      />
     </div>
   )
 }
