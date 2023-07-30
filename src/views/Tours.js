@@ -8,10 +8,8 @@ import img1 from '../media/space-station.png'
 import logo from '../media/gg312.png'
 import { FaSpaceShuttle } from "react-icons/fa";
 import spaceStationIcon from '../media/space-station.png'
-
-
 import InteractiveGlobe from '../components/InteractiveGlobe'
-// import Glober from '../components/Globe'
+
 
 const Tours = () => {
   const mapContainerRef = useRef(null)
@@ -21,6 +19,7 @@ const Tours = () => {
   const [latitude, setLatitude] = useState(0)
   const [longitude, setLongitude] = useState(0)
   const [showPopup, setShowPopup] = useState(false);
+  const [globeRotation, setGlobeRotation] = useState(0); 
 
 
   useEffect(() => {

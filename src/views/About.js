@@ -27,7 +27,13 @@ const About = () => {
   return (
     <div className="star-image about-container">
       <div className="logo-container">
-        <img src={logo} alt="company logo" className="logo" />
+      <div className="logo-container">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/galacticgetaways-8c0b1.appspot.com/o/images%2Fgg312.webp?alt=media&token=4cfb3dc6-eaf0-4f88-8d17-0e965d599e8f"
+          alt="company logo"
+          className="logo"
+        />
+      </div>
       </div>
       <div className="about-content">
         {info.map((name, index) => (
