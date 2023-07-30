@@ -3,18 +3,18 @@ import * as THREE from 'three';
 import ThreeGlobe from 'three-globe';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 
-// Lazy load the ThreeGlobe component
+
 const LazyThreeGlobe = React.lazy(() => import('./LazyThreeGlobe'));
 
-const InteractiveGlobe = () => {
-  // State to track whether the globe is loaded
+const InteractiveGlobe = ({long, lat}) => {
+ 
   const [globeLoaded, setGlobeLoaded] = useState(false);
 
   useEffect(() => {
-    // Simulate some async task like loading data or resources
+   
     setTimeout(() => {
       setGlobeLoaded(true);
-    }, 2000); // Adjust the timeout as needed
+    }, 2000); 
   }, []);
 
   return (
@@ -27,7 +27,7 @@ const InteractiveGlobe = () => {
       ) : (
 
         <React.Suspense fallback={null}>
-          <LazyThreeGlobe />
+          <LazyThreeGlobe long={long} lat={lat} />
         </React.Suspense>
       )}
     </div>

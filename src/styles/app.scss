@@ -22,7 +22,7 @@ $primary-color: #b92eff;
 // }
 canvas {
   position: absolute;
-  background-image: url('//unpkg.com/three-globe/example/img/night-sky.png') ;
+  background-image: url('//unpkg.com/three-globe/example/img/night-sky.png');
 }
 .globe-wrap {
   width: 100vw;
@@ -324,10 +324,26 @@ button {
   padding: 3px 20px !important;
   background-color: #000 !important;
 }
+.info-popup {
+  position: absolute;
+  // background-color: $primary-color;
+  color: white;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  // transform: rotate(90deg);
+  visibility: hidden;
+}
+.pulsate {
+}
+.shut-iss:hover .popup {
+  visibility: visible;
+}
 .tour-menu {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  flex-direction: column;
   width: 100%;
   background-color: #000;
   font-family: 'NASA', sans-serif;
@@ -341,6 +357,38 @@ button {
   border-radius: 5px;
   padding: 8px 10px;
   list-style: none;
+  .shut-iss {
+    padding: 10px;
+    margin: 10px;
+    height: 30px;
+    font-size: 1.3em;
+
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px rgb(185, 46, 255);
+    color: #fff;
+    // .rotate {
+    //   transform: rotate(-90deg) !important;
+    // }
+    
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    .pulsate {
+      animation: pulse 1s infinite ease-in-out !important;
+    }
+    .rotate {
+      rotate: (-90deg)
+    }
+   
+  }
   .tour-pack.dropdown-menu {
     display: none;
     position: absolute;
@@ -522,7 +570,7 @@ button {
       bottom: 10%;
       right: 10%;
       transform: translate(0%, -50%);
-      background-color: #111;
+      background-color: #0b0b0b;
       z-index: 1000;
       padding: 10px 20px 20px 20px;
       border-radius: 5px;
@@ -650,7 +698,7 @@ button {
   align-items: center;
   padding: 0 0 20% 0;
   justify-content: space-between;
-  background-image: url("//unpkg.com/three-globe/example/img/night-sky.png");
+  background-image: url('//unpkg.com/three-globe/example/img/night-sky.png');
   height: 80vh;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -898,7 +946,7 @@ button {
     display: flex;
     // width: 100%;
     // padding: 20px 0;
-    padding:10px 0 15px 0 ;
+    padding: 10px 0 15px 0;
     align-items: flex-start;
     flex-direction: column;
     width: fit-content;
@@ -1107,7 +1155,7 @@ select:focus {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #111;
+  background-color: #0b0b0b;
   color: #fff;
 }
 
@@ -1158,7 +1206,7 @@ select:focus {
 }
 
 .star-image {
-  background-image: url("https://i.ibb.co/dk8yKT6/night-sky.webp") ;
+  background-image: url('https://i.ibb.co/dk8yKT6/night-sky.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -1387,7 +1435,7 @@ button[type='submit'] {
   height: 15vw;
   z-index: 11 !important;
   border-radius: 50%;
-  background-color: #111;
+  background-color: #0f0f0f;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1968,7 +2016,6 @@ body {
 /* Tablet & Desktop version */
 
 @media only screen and (min-width: 728px) {
-
   .acc-msg {
     width: 250px;
     text-align: left;
@@ -1977,7 +2024,7 @@ body {
     box-shadow: 0px 0px 15px #b92eff;
     border-radius: 5px;
     padding: 5px 20px;
-}
+  }
   .globe-wrap {
     width: 100%;
     max-height: 800px;
@@ -2020,7 +2067,7 @@ body {
     bottom: 10%;
     right: 10%;
     transform: translate(0%, -50%);
-    background-color: #111;
+    background-color: #0e0e0e;
     z-index: 1000;
     padding: 10px 20px 20px 20px;
     border-radius: 5px;
@@ -2083,7 +2130,7 @@ body {
       align-items: flex-start;
       justify-content: center;
       width: fit-content;
-      p{
+      p {
         margin: 5px 0;
       }
       div {
@@ -2115,14 +2162,17 @@ body {
     transition: opacity 0.3s, visibility 0.3s;
     animation: bounce 0.5s 6 alternate;
 
-  background: linear-gradient(159deg, rgba(185, 46, 255, 1) 0%, rgba(0, 99, 255, 1) 100%);
-  display: inline-block;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+    background: linear-gradient(
+      159deg,
+      rgba(185, 46, 255, 1) 0%,
+      rgba(0, 99, 255, 1) 100%
+    );
+    display: inline-block;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
   .back-to-top-button.visible {
-    
     opacity: 1;
     visibility: visible;
   }
@@ -2209,7 +2259,7 @@ body {
   .navbar-dropdown .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: #282828;
+    background-color: #131313;
     border-radius: 10px;
     padding: 10px;
     z-index: 1;
@@ -2285,7 +2335,7 @@ body {
         bottom: 10%;
         right: 10%;
         transform: translate(-50%, -50%);
-        background-color: #111;
+        background-color: #0b0b0b;
         padding: 10px 20px 20px 20px;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -2366,7 +2416,7 @@ body {
   }
 
   .home-content {
-    background-image: url('//unpkg.com/three-globe/example/img/night-sky.png') ;
+    background-image: url('//unpkg.com/three-globe/example/img/night-sky.png');
     background-repeat: repeat;
     background-size: cover;
     background-position: center center;
@@ -2908,7 +2958,6 @@ body {
 .tablet-view {
   width: 769px;
 }
-
 
 .video-wrap {
   width: 100%;
