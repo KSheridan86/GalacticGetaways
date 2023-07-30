@@ -2,9 +2,9 @@
 ## Beyond the Horizon
 ------------------------------------
 
-![alt text]()
+![alt text](./src/docs/amiresponsive.png)
 
-### Live site available [here](). 
+### Live site available [here](https://www.galacticgetaways.ie). 
 
 
 -----
@@ -102,26 +102,26 @@ Users have the ability to view information on available products and Book a tour
 The emphasis of the design is to provide a clear layout that can adapt to any size device.
 
 
-![Tour Page Wireframe]()
+![Tour Page Wireframe](./src/docs/tours-wf.png)
 
 About Page:
 
 Users can view a page dedicated to the company and it's goals, this page includes basic information and photos.
 
-![About Wireframe]()
+![About Wireframe](./src/docs/about-wf.png)
 
 Contact Page:
 
 Users can navigate to the contact page and reach out to the company.
 
-![Contact Wireframe]()
+![Contact Wireframe](./src/docs/contact-wf.png)
 
 
 Account/Sign in Page:
 
 Users can create accounts, sign in and see their saved details.
 
-![Accounts Wireframe]()
+![Accounts Wireframe](./src/docs/account-wf.png)
 
 
 [Back to the Top](#table-of-contents)
@@ -191,7 +191,7 @@ A welcoming homepage was built to clearly convey the sites purpose. The Nav butt
 
 ##### Tours Page:
 
-![Tours Page]()
+![Tours Page](./src/docs/tours.png)
 
 ##### Contact Page:
 
@@ -274,31 +274,11 @@ We utilized a manual testing strategy for the development of the site.
 Separate to the functionality testing of the site, and the testing of the code, User Story tests were implemented to ensure that the criteria of the user stories listed above were met.
 
 
-
-#### Validator Testing
-All code files were validated using suitable validators for the specific language.
-HTML, CSS & JavaScript code passed the validation.
-
-All validation screenshots are included below.
-
-All HTML validation returned the same result so I have included only 1 screenshot here.
-## HTML
-![HTML Validation]()
-## CSS
-![CSS Validation]()
-## JS
-![Script JS]()
-## JS
-![Stripe JS]()
-## JS
-![Quantity Input JS]()
-
-
 #### Lighthouse Testing
 Below you can see the results of Googles Lighthouse Testing.
 
 
-![Lighthouse Testing]()
+![Lighthouse Testing](./src/docs/lighthouse.png)
 
 
 
@@ -336,7 +316,6 @@ This is reflected in the fact that all of the functionality is working.
 * Firebase was used to store the database for the site, this included the user accounts and the tour bookings. 
 * Vercel was used to deploy the site
 
-"More to come"
 
 [Back to the Top](#table-of-contents)
 
@@ -344,7 +323,24 @@ This is reflected in the fact that all of the functionality is working.
 
 ## Deployment
 
-"To be filled in"
+We used Vercel for deployment as it was a simple and robust solution.
+
+The steps to deploy are:
+
+Install Vercel:
+
+•	npm install -g vercel
+
+Build the React app
+
+•	npm run build
+
+Deploy to Vercel
+
+•	vercel
+
+That’s it!
+
 
 
 #### Forking the repository
@@ -368,13 +364,6 @@ This can be done by:
 
 [Back to the Top](#table-of-contents)
 
------
-
-## Credits
-
-"To be filled in"
-
-[Back to the Top](#table-of-contents)
 
 -----
 
@@ -383,7 +372,7 @@ This can be done by:
 
 Luke O'Hanlon, Full Stack Software Developer.
 - [GitHub](https://github.com/luke0hanlon)
-- [Linkedin](https://www.linkedin.com/in/)
+- [Linkedin](https://www.linkedin.com/in/lukeohanlon)
 
 
 Ken Sheridan, Full Stack Software Developer.
